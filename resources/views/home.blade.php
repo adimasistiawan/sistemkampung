@@ -2,6 +2,13 @@
 @section('title')
     Home | Kampung Notoharjo
 @endsection
+@section('css')
+    <style>
+      .link{
+        
+      }
+    </style>
+@endsection
 @section('content')
 <div class="flash-news-banner">
     <div class="container">
@@ -55,38 +62,47 @@
           <div class="card">
             <div class="card-body">
             @foreach ($berita as $item)
+            
             <div class="row">
-                <div class="col-sm-4 grid-margin">
-                  <div class="position-relative">
-                    <div class="rotate-img">
-                      <img
-                        src="{{asset('image_berita/'.$item->foto)}}"
-                        alt="thumb"
-                        class="img-fluid" width="200px" height="200px"
-                      />
-                    </div>
-                    <div class="badge-positioned">
-                      <span class="badge badge-danger font-weight-bold"
-                        >Terbaru</span
-                      >
-                    </div>
+              <div class="col-sm-4 grid-margin">
+                <div class="position-relative">
+                  <div class="rotate-img">
+                    <img
+                      src="{{asset('image_berita/'.$item->foto)}}"
+                      alt="thumb"
+                      class="img-fluid"
+                    />
                   </div>
-                </div>
-                <div class="col-sm-8  grid-margin">
-                  <h2 class="mb-2 font-weight-600">
-                    {{$item->judul}}
-                  </h2>
-                  <div class="fs-13 mb-2">
-                    {{$item->tanggal}}
+                  <div class="badge-positioned">
+                    <span class="badge badge-danger font-weight-bold"
+                      >Terbaru</span
+                    >
                   </div>
-                  <p class="mb-0">
-                    {!!  \Illuminate\Support\Str::limit($item->isi,150,'...') !!}
-                  </p>
                 </div>
               </div>
-            </div>
+              <div class="col-sm-8  grid-margin">
+                <h2 class="mb-2 font-weight-600">
+                  {{$item->judul}}
+                </h2>
+                <div class="fs-13 mb-2">
+                  <span class="mr-2">{{$item->tanggal}} </span>
+                </div>
+                <p class="mb-0">
+                  {!!  \Illuminate\Support\Str::limit($item->isi,150,'...') !!}
+                </p>
+                <a href="">
+                  <h4 class="mb-2 font-weight-600">
+                    Selengkapnya
+                  </h4>
+                </a>
+              </div>
+            </div> 
+          
             @endforeach
-              
+            </div>
+
+            
+             
           </div>
         </div>
       </div>

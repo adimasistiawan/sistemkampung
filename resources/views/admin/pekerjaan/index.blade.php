@@ -35,8 +35,8 @@
                     <thead>
                         <tr>
                             <th width="15px">No</th>
-                            <th>Nama</th>
-                            <th>Aksi</th>
+                            <th class="text-center">Nama</th>
+                            <th class="text-center">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>

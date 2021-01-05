@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Profil;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\File;
 class ProfilController extends Controller
 {
     /**
@@ -45,10 +46,17 @@ class ProfilController extends Controller
 
         if($request->hasFile('struktur_organisasi')){
             $profil = Profil::find($request->id);
+            $img = json_decode($profil->data, true);
+            $image_path = "struktur/".$img['struktur_organisasi'];
+            if(File::exists($image_path)) {
+                File::delete($image_path);
+            }
             $resorce       = $request->file('struktur_organisasi');
             $name   = Str::random().$resorce->getClientOriginalName();
             $resorce->move(\base_path() ."/public/struktur", $name);
 
+            
+            
             $data = json_encode([
                 'sejarah' => $request->sejarah,
                 'visi' => $request->visi,

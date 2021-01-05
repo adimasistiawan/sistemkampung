@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Berita;
 use Carbon\Carbon;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\File;
 class BeritaController extends Controller
 {
     /**
@@ -84,11 +85,16 @@ class BeritaController extends Controller
     public function update(Request $request, $id)
     {
         if($request->hasFile('foto')){
+            $berita = Berita::find($id);
             $resorce       = $request->file('foto');
             $name   = Str::random().$resorce->getClientOriginalName();
             $resorce->move(\base_path() ."/public/image_berita", $name);
 
-            Berita::find($id)->update([
+            $image_path = "image_berita/".$berita->foto;
+            if(File::exists($image_path)) {
+                File::delete($image_path);
+            }
+            $berita->update([
                 'foto' => $name,
                 'judul' => $request->judul,
                 'tanggal' => $request->tanggal,
@@ -112,7 +118,12 @@ class BeritaController extends Controller
      */
     public function destroy($id)
     {
-        Berita::find($id)->delete();
+        $berita = Berita::find($id);
+        $image_path = "image_berita/".$berita->foto;
+        if(File::exists($image_path)) {
+            File::delete($image_path);
+        }
+        $berita->delete();
         return redirect()->route('berita.index')->with('success', 'Success');
     }
 }

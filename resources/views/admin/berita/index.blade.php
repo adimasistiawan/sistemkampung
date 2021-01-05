@@ -36,10 +36,10 @@
                     <thead>
                         <tr>
                             <th width="15px">No</th>
-                            <th>Foto</th>
-                            <th>Judul</th>
-                            <th>Tanggal</th>
-                            <th>Aksi</th>
+                            <th class="text-center">Foto</th>
+                            <th class="text-center">Judul</th>
+                            <th class="text-center">Tanggal</th>
+                            <th class="text-center">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>

@@ -17,22 +17,35 @@ Route::get('/', 'FrontendController@index')->name('index');
 Route::get('/masuk', function () {
     return view('login');
 })->name('login.warga');
+
 Route::get('/daftar', function () {
     return view('daftar');
 })->name('daftar');
+
+Route::get('/login', function () {
+    return view('login');
+})->name('login.warga');
+
 Route::get('/verifikasi', function () {
     return view('verifikasi');
 })->name('verifikasi');
+
 Route::post('/daftar/submit','AuthWargaController@daftar')->name('daftar.submit');
+Route::post('/login/submit','AuthWargaController@login')->name('login.warga.submit');
+Route::get('/logout/warga', 'AuthWargaController@logout')->name('logout.warga');
+Route::group(['middleware' => 'warga'], function () {
+    Route::get('/akun', 'ProfilWargaController@profil')->name('profil.warga');
+    Route::get('/akun/ganti-password', 'ProfilWargaController@gantipassword')->name('gantipassword.warga');
+    Route::post('/akun/ganti-password/submit','ProfilWargaController@submitgantipassword')->name('gantipassword.warga.submit');
+});
+
+
 
 
 Route::get('/admin', function () {
     return view('admin.login');
 })->name('login.admin');
-
 Route::post('/login','AuthAdminController@login')->name('login.submit');
-
-
 Route::group(['middleware' => 'admin'], function () {
     Route::get('/admin/dashboard','DashboardController@index')->name('dashboard');
     Route::resource('/admin/penduduk', 'PendudukController');
@@ -41,6 +54,7 @@ Route::group(['middleware' => 'admin'], function () {
     Route::resource('/admin/berita', 'BeritaController');
     Route::resource('/admin/profil', 'ProfilController');
     Route::resource('/admin/warga', 'WargaController');
+    Route::get('/admin/warga/verifikasi/{id}','WargaController@verifikasi')->name('warga.verifikasi');
 
     Route::get('logout', 'AuthAdminController@logout')->name('logout');
     

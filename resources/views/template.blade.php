@@ -55,13 +55,13 @@
                 <div class="d-flex justify-content-between align-items-center">
                     <div class="row" style="margin-top: 20px">
                         <div class="col-md-2">
-                            <a style="text-decoration: none" href="#"
+                            <a style="text-decoration: none" href="{{route('index')}}"
                             ><img src="{{asset('logo.png')}}" alt="" width="50px" height="50px"
                         />&nbsp;</a>
                         </div>
                         
                         <div class="col-md-10">
-                        <a style="text-decoration: none" href="#"
+                        <a style="text-decoration: none" href="{{route('index')}}"
                             >KAMPUNG NOTOHARJO <br> Kec. Trimurjo, Kab. Lampung Tengah</a>
                         </div>
                     </div>
@@ -89,7 +89,7 @@
                           </button>
                         </li>
                         <li class="nav-item">
-                        <a href="pages/index-inner.html" class="nav-link">Home</a>
+                        <a href="{{route('index')}}" class="nav-link">Home</a>
                     </li>
                         <li class="nav-item">
                         <a href="pages/index-inner.html" class="nav-link">Berita</a>
@@ -103,21 +103,47 @@
                         <li class="nav-item">
                         <a href="#" class="nav-link">Lembaga</a>
                         </li>
+                        <li class="nav-item">
+                          &nbsp;
+                        </li>
+                        
+                        @if (Auth::guard('warga')->user() == null)
+                        <li class="nav-item">
+                          <a href="{{route('login.warga')}}" class="nav-link btn btn-outline-info">
+                            MASUK
+                          </a>
+                        </li>
+                        <li class="nav-item">
+                          &nbsp;
+                        </li>
+                        <li class="nav-item">
+                          <a href="{{route('daftar')}}" class="nav-link btn btn-outline-info">
+                            DAFTAR
+                          </a>
+                        </li>
+                        @else
+                        <li class="nav-item">
+                          <a href="{{route('profil.warga')}}" class="nav-link btn btn-outline-info">
+                            Akun
+                          </a>
+                        </li>
+                        <li class="nav-item">
+                          &nbsp;
+                        </li>
+                        <li class="nav-item">
+                          <a href="{{route('logout.warga')}}" class="nav-link btn btn-outline-info">
+                            Keluar
+                          </a>
+                        </li>
+                        @endif
+                        
+                      </ul>
+                      <ul class="social-media">
+                        
                       </ul>
                     </div>
                   </div>
-                  <ul class="social-media">
-                    <li>
-                      <a href="#">
-                        MASUK
-                      </a>
-                    </li>
-                    <li>
-                      <a href="{{route('daftar')}}">
-                        DAFTAR
-                      </a>
-                    </li>
-                  </ul>
+                  
                 </div>
               </div>
             </nav>

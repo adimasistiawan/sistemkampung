@@ -65,6 +65,19 @@
         <li><a href="{{route('penduduk.index')}}"><i class="fa fa-users"></i> <span>Penduduk</span></a></li>
         <li><a href="{{route('berita.index')}}"><i class="fa fa-newspaper-o"></i> <span>Berita</span></a></li>
         <li><a href="{{route('profil.index')}}"><i class="fa fa-globe"></i> <span>Profil</span></a></li>
+        @php
+            $wargabaru = App\Warga::where('status','Belum Diverifikasi')->count();
+        @endphp
+        <li>
+          <a href="{{route('warga.index')}}"><i class="fa fa-user-circle-o"></i>
+           <span>Akun Warga</span>
+           @if ($wargabaru > 0)
+            <span class="pull-right-container">
+              <span class="label label-danger pull-right">{{$wargabaru}}</span>
+            </span>
+           @endif
+          </a>
+        </li>
         <li class="treeview">
           <a href="#">
             <i class="fa fa-database"></i> <span>Master</span>

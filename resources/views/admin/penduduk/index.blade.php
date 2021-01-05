@@ -36,11 +36,11 @@
                     <thead>
                         <tr>
                             <th width="15px">No</th>
-                            <th>Kepala Keluarga</th>
-                            <th>No Kartu Keluarga</th>
-                            <th>Alamat</th>
-                            <th>RT/RW</th>
-                            <th>Aksi</th>
+                            <th class="text-center">Kepala Keluarga</th>
+                            <th class="text-center">No Kartu Keluarga</th>
+                            <th class="text-center">Alamat</th>
+                            <th class="text-center">RT/RW</th>
+                            <th class="text-center">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
