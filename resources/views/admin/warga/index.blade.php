@@ -119,6 +119,61 @@
               <input type="text" class="form-control" placeholder="No. HP" name="no_hp" value="{{$value->no_hp}}" required>
             </div>
             <div class="form-group">
+              <label  >Alamat</label>
+              <input type="text" class="form-control" required value="{{$value->alamat}}" name="alamat">
+          </div>
+            <div class="form-group">
+                <label  >Tempat Lahir</label>
+                <input type="text" class="form-control" required name="tempat_lahir" value="{{$value->tempat_lahir}}">
+            </div>
+            <div class="form-group">
+                <label  >Tanggal Lahir</label>
+                <input type="date" class="form-control" required name="tanggal_lahir" value="{{$value->tanggal_lahir}}">
+            </div>
+            <div class="form-group">
+              <label  >Status Kawin</label>
+              <br>
+              <select name="status_kawin" class="form-control"  required>
+                  <option value="Belum Kawin" @if($value->status_kawin == "Belum Kawin") selected @endif>Belum Kawin</option>
+                  <option value="Kawin" @if($value->status_kawin == "Kawin") selected @endif>Kawin</option>
+                  
+              </select>
+          </div>
+          <div class="form-group">
+              <label  >Pilih Pekerjaan</label>
+              <br>
+              <select name="pekerjaan_id" class="form-control" required>
+                  <option value="">--Pilih Pekerjaan--</option>
+                  @foreach ($pekerjaan as $item)
+                  <option value="{{$item->id}}" @if($value->pekerjaan_id == $item->id) selected @endif>{{$item->nama}}</option>
+                  @endforeach
+                  
+              </select>
+          </div>
+          <div class="form-group">
+              <label  >Agama</label>
+              <br>
+              <select name="agama" class="form-control" required>
+                  <option value="">--Pilih Agama--</option>
+                  <option value="Islam" @if($value->agama == "Islam") selected @endif>Islam</option>
+                  <option value="Kristen"  @if($value->agama == "Kristen") selected @endif>Kristen</option>
+                  <option value="Katolik"  @if($value->agama == "Katolik") selected @endif>Katolik</option>
+                  <option value="Hindu"  @if($value->agama == "Hindu") selected @endif>Hindu</option>
+                  <option value="Budha"  @if($value->agama == "Budha") selected @endif>Budha</option>
+                  <option value="Konghucu"  @if($value->agama == "Konghucu") selected @endif>Konghucu</option>
+                  
+              </select>
+          </div>
+          <div class="form-group">
+              <label  >Jenis Kelamin</label>
+              <br>
+              <select name="jenis_kelamin" class="form-control" required>
+                  <option value="Laki-laki" @if($value->agama == "Laki-laki") selected @endif>Laki-laki</option>
+                  <option value="Perempuan" @if($value->agama == "Perempuan") selected @endif>Perempuan</option>
+                  
+              </select>
+          </div>
+            <div class="form-group">
               <label>Email</label>
               <input type="email" class="form-control" placeholder="Email" name="email" value="{{$value->email}}" required>
             </div>

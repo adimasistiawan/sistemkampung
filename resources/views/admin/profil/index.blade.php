@@ -53,15 +53,29 @@
                           style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;" required>{{$data['misi']}}</textarea>
                     </div>
                   </div>
-                  <div class="col-md-4">
-                    <div class="form-group">
-                      <label  >Struktur Oganisasi</label>
-                      <br>
-                      <img id="blah" src="{{asset('struktur/'.$data['struktur_organisasi'])}}" alt="your image" height="200px" width="250px"/>
-                      <br>
-                      <input type='file' id="imgInp" name="struktur_organisasi"  />
+                  
+                  <br>
+                  <div class="row">
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <label  >Struktur Oganisasi</label>
+                        <br>
+                        <img id="blah" src="{{asset('struktur/'.$data['struktur_organisasi'])}}" alt="your image" height="200px" width="250px"/>
+                        <br>
+                        <input type='file' accept="image/*" id="imgInp" name="struktur_organisasi"  />
+                      </div>
                     </div>
                   </div>
+                  <div class="row">
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <label  >Nama Ketua Kampung</label>
+                        <input type='text' class="form-control" value="{{$data['nama_ketua_kampung']}}" name="nama_ketua_kampung"  required/>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  
             </div>
             <div class="box-footer">
                 <button type="submit" class="btn btn-primary simpan" name="submit">Simpan</button>
@@ -80,6 +94,14 @@
 <script src="{{asset('admin_asset/plugins/parsley-js/parsley.js')}}"></script>
 <script src="{{asset('admin_asset/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js')}}"></script>
 <script>
+
+    @if(session()->has('success'))
+         toastr.success("{{session('success')}}")
+    @endif
+
+    @if(session()->has('error'))
+    $.alert("{{session('error')}}")
+    @endif
   $('.textarea').wysihtml5()
 function readURL(input) {
   if (input.files && input.files[0]) {

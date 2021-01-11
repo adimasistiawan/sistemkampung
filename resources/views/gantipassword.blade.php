@@ -20,8 +20,8 @@
             <div class="card-body">
               <h2>Menu</h2>
               <ul class="vertical-menu">
-                <li><a href="#">Data Akun</a></li>
-                <li><a href="#">Surat</a></li>
+                <li><a href="{{route('profil.warga')}}">Data Akun</a></li>
+                <li><a href="{{route('surat')}}">Surat</a></li>
                 <li><a href="{{route('gantipassword.warga')}}">Ganti Password</a></li>
               </ul>
             </div>

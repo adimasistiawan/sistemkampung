@@ -2251,7 +2251,6 @@ textarea.form-control {
 }
 
 .form-inline {
-  display: flex;
   flex-flow: row wrap;
   align-items: center;
 }
@@ -2264,7 +2263,6 @@ textarea.form-control {
   .form-inline label {
     display: flex;
     align-items: center;
-    justify-content: center;
     margin-bottom: 0;
   }
   .form-inline .form-group {
@@ -9859,7 +9857,6 @@ h6, .h6 {
   color: #ababac;
   font-size: 14px;
   font-weight: 500;
-  padding: 15px 64px;
 }
 
 .pagination .page-item .active {
@@ -9867,7 +9864,7 @@ h6, .h6 {
 }
 
 .pagination .page-item.active .page-link, .pagination .page-item:hover .page-link, .pagination .page-item:focus .page-link, .pagination .page-item:active .page-link {
-  color: #007bff;
+  color: #fff;
 }
 
 /* Buttons */

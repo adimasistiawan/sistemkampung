@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Profil;
+use App\Pengaturan;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\File;
 class ProfilController extends Controller
@@ -15,12 +15,36 @@ class ProfilController extends Controller
      */
     public function index()
     {
-        $profil = Profil::all();
-        $data = json_decode($profil[0]->data, true);
+        $profil = Pengaturan::all();
+        $data = json_decode($profil[0]->profil, true);
         $id = $profil[0]->id;
         
         return view('admin.profil.index',compact('data','id'));
         // return view('admin.profil.index');
+    }
+
+    public function sejarah(){
+        $profil = Pengaturan::all();
+        $data = json_decode($profil[0]->profil, true);
+        return view('profil.sejarah',compact('data'));
+    }
+
+    public function visimisi(){
+        $profil = Pengaturan::all();
+        $data = json_decode($profil[0]->profil, true);
+        return view('profil.visimisi',compact('data'));
+    }
+
+    public function struktur(){
+        $profil = Pengaturan::all();
+        $data = json_decode($profil[0]->profil, true);
+        return view('profil.struktur',compact('data'));
+    }
+
+    public function lokasi(){
+        $profil = Pengaturan::all();
+        $data = json_decode($profil[0]->profil, true);
+        return view('profil.lokasi',compact('data'));
     }
 
     /**
@@ -42,11 +66,9 @@ class ProfilController extends Controller
     public function store(Request $request)
     {
         
-        
-
         if($request->hasFile('struktur_organisasi')){
-            $profil = Profil::find($request->id);
-            $img = json_decode($profil->data, true);
+            $profil = Pengaturan::find($request->id);
+            $img = json_decode($profil->profil, true);
             $image_path = "struktur/".$img['struktur_organisasi'];
             if(File::exists($image_path)) {
                 File::delete($image_path);
@@ -61,22 +83,24 @@ class ProfilController extends Controller
                 'sejarah' => $request->sejarah,
                 'visi' => $request->visi,
                 'misi' => $request->misi,
+                'nama_ketua_kampung' => $request->nama_ketua_kampung,
                 'struktur_organisasi' => $name,
             ]);
             $profil->update([
-                'data' => $data
+                'profil' => $data
             ]);
         }else{
-            $profil = Profil::find($request->id);
-            $img = json_decode($profil->data, true);
+            $profil = Pengaturan::find($request->id);
+            $img = json_decode($profil->profil, true);
             $data = json_encode([
                 'sejarah' => $request->sejarah,
                 'visi' => $request->visi,
                 'misi' => $request->misi,
+                'nama_ketua_kampung' => $request->nama_ketua_kampung,
                 'struktur_organisasi' => $img['struktur_organisasi'],
             ]);
             $profil->update([
-                'data' => $data
+                'profil' => $data
             ]);
         }
         return redirect()->route('profil.index')->with('success', 'Success');

@@ -19,6 +19,13 @@ class AuthWargaController extends Controller
             'no_kk' => $request->no_kk,
             'no_hp' => $request->no_hp,
             'email' => $request->email,
+            'agama' => $request->agama,
+            'jenis_kelamin' => $request->jenis_kelamin,
+            'pekerjaan_id' => $request->pekerjaan,
+            'tempat_lahir' => $request->tempat_lahir,
+            'tanggal_lahir' => $request->tanggal_lahir,
+            'alamat' => $request->alamat,
+            'status_kawin' => $request->status_kawin,
             'password' => bcrypt($request->password),
             'status' => 'Belum Diverifikasi',
         ]);
@@ -33,7 +40,7 @@ class AuthWargaController extends Controller
                 return redirect()->back()->with('message','Akun anda belum diverifikasi');
             }
             else{
-                return redirect()->route('index');
+                return redirect()->route('profil.warga');
             }
         }
         else{

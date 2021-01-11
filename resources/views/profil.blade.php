@@ -20,8 +20,8 @@
             <div class="card-body">
               <h2>Menu</h2>
               <ul class="vertical-menu">
-                <li><a href="#">Data Akun</a></li>
-                <li><a href="#">Surat</a></li>
+                <li><a href="{{route('profil.warga')}}">Data Akun</a></li>
+                <li><a href="{{route('surat')}}">Surat</a></li>
                 <li><a href="{{route('gantipassword.warga')}}">Ganti Password</a></li>
               </ul>
             </div>
@@ -60,10 +60,46 @@
                           <td>{{Auth::guard('warga')->user()->no_hp}}</td>
                       </tr>
                       <tr height="40px">
-                          <th>Email</th>
-                          <td>:</td>
-                          <td>{{Auth::guard('warga')->user()->email}}</td>
+                        <th>Pekerjaan</th>
+                        <td>:</td>
+                        <td>{{Auth::guard('warga')->user()->pekerjaan->nama}}</td>
                       </tr>
+                      <tr height="40px">
+                        <th>Status Kawin</th>
+                        <td>:</td>
+                        <td>{{Auth::guard('warga')->user()->status_kawin}}</td>
+                      </tr>
+                      <tr height="40px">
+                        <th>Tempat Lahir</th>
+                        <td>:</td>
+                        <td>{{Auth::guard('warga')->user()->tempat_lahir}}</td>
+                      </tr>
+                      <tr height="40px">
+                        <th>Tanggal Lahir</th>
+                        <td>:</td>
+                        <td>{{Auth::guard('warga')->user()->tanggal_lahir}}</td>
+                      </tr>
+                      <tr height="40px">
+                        <th>Agama</th>
+                        <td>:</td>
+                        <td>{{Auth::guard('warga')->user()->agama}}</td>
+                      </tr>
+                      <tr height="40px">
+                        <th>Email</th>
+                        <td>:</td>
+                        <td>{{Auth::guard('warga')->user()->email}}</td>
+                      </tr>
+                      <tr height="40px">
+                          <th>Jenis Kelamin</th>
+                          <td>:</td>
+                          <td>{{Auth::guard('warga')->user()->jenis_kelamin}}</td>
+                      </tr>
+                      <tr height="40px">
+                        <th>Alamat</th>
+                        <td>:</td>
+                        <td>{{Auth::guard('warga')->user()->alamat}}</td>
+                      </tr>
+                      
                       
                   </table>
                 </div>

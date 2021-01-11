@@ -38,7 +38,7 @@
                       <br>
                       <img id="blah" src="{{asset('image_berita/'.$berita->foto)}}" alt="your image" height="200px" width="250px"/>
                       <br>
-                      <input type='file' id="imgInp" name="foto" />
+                      <input type='file' id="imgInp" accept="image/*" name="foto" />
                     </div>
                     <div class="form-group">
                       <label  >Judul</label>

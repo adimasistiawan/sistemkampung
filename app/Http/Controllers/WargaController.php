@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Warga;
+use App\Pekerjaan;
 use Mail;
 class WargaController extends Controller
 {
@@ -14,8 +15,9 @@ class WargaController extends Controller
      */
     public function index()
     {
+        $pekerjaan = Pekerjaan::where('is_delete',0)->get();
         $data = Warga::orderBy('created_at','desc')->get();
-        return view('admin.warga.index',compact('data'));
+        return view('admin.warga.index',compact('data','pekerjaan'));
     }
 
     /**
@@ -47,7 +49,8 @@ class WargaController extends Controller
      */
     public function show($id)
     {
-        $warga = Warga::find($id);
+        $warga = Warga::where('id',$id)->with('pekerjaan')->first();
+        
         return view('admin.warga.show',compact('warga'));
     }
 
@@ -86,6 +89,13 @@ class WargaController extends Controller
                 'nik' => $request->nik,
                 'no_kk' => $request->no_kk,
                 'no_hp' => $request->no_hp,
+                'alamat' => $request->alamat,
+                'jenis_kelamin' => $request->jenis_kelamin,
+                'tempat_lahir' => $request->tempat_lahir,
+                'tanggal_lahir' => $request->tanggal_lahir,
+                'agama' => $request->agama,
+                'status_kawin' => $request->status_kawin,
+                'pekerjaan_id' => $request->pekerjaan_id,
                 'email' => $request->email,
             ]);
         }else{
@@ -94,6 +104,13 @@ class WargaController extends Controller
                 'nik' => $request->nik,
                 'no_kk' => $request->no_kk,
                 'no_hp' => $request->no_hp,
+                'alamat' => $request->alamat,
+                'jenis_kelamin' => $request->jenis_kelamin,
+                'tempat_lahir' => $request->tempat_lahir,
+                'tanggal_lahir' => $request->tanggal_lahir,
+                'agama' => $request->agama,
+                'status_kawin' => $request->status_kawin,
+                'pekerjaan_id' => $request->pekerjaan_id,
                 'email' => $request->email,
                 'password' => Hash::make($request->password),
             ]);

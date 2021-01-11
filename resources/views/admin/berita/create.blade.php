@@ -35,9 +35,9 @@
                     <div class="form-group">
                       <label  >Foto</label>
                       <br>
-                      <img id="blah" src="#" alt="your image" height="200px" width="250px" hidden/>
+                      <img id="blah" src="#"  alt="your image" height="200px" width="250px" hidden/>
                       <br>
-                      <input type='file' id="imgInp" name="foto" required />
+                      <input type='file' id="imgInp" accept="image/*" name="foto" required />
                     </div>
                     <div class="form-group">
                       <label  >Judul</label>

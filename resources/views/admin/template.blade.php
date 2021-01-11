@@ -64,7 +64,6 @@
         <li><a href="{{route('dashboard')}}"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
         <li><a href="{{route('penduduk.index')}}"><i class="fa fa-users"></i> <span>Penduduk</span></a></li>
         <li><a href="{{route('berita.index')}}"><i class="fa fa-newspaper-o"></i> <span>Berita</span></a></li>
-        <li><a href="{{route('profil.index')}}"><i class="fa fa-globe"></i> <span>Profil</span></a></li>
         @php
             $wargabaru = App\Warga::where('status','Belum Diverifikasi')->count();
         @endphp
@@ -80,17 +79,18 @@
         </li>
         <li class="treeview">
           <a href="#">
-            <i class="fa fa-database"></i> <span>Master</span>
+            <i class="fa fa-gear"></i> <span>Pengaturan</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
+            <li><a href="{{route('profil.index')}}"><i class="fa fa-circle-o"></i>Profil</a></li>
+            <li><a href="{{route('web.index')}}"><i class="fa fa-circle-o"></i>Web</a></li>
             <li><a href="{{route('pekerjaan.index')}}"><i class="fa fa-circle-o"></i>Pekerjaan</a></li>
-            <li><a href="{{route('pendidikan.index')}}"><i class="fa fa-circle-o"></i>Pendidikan</a></li>
           </ul>
         </li>
-        <li><a href="{{route('logout')}}"><i class="fa fa-circle-o text-red"></i> <span>Logout</span></a></li>
+        <li><a href="{{route('logout')}}"><i class="fa fa-sign-out text-red"></i> <span>Logout</span></a></li>
       </ul>
     </section>
     <!-- /.sidebar -->
@@ -117,6 +117,8 @@
 <script src="{{asset('admin_asset/plugins/jquery-confirm/js/jquery-confirm.js')}}"></script>
 <script src="{{asset('admin_asset/bower_components/datatables.net/js/jquery.dataTables.min.js')}}"></script>
 <script src="{{asset('admin_asset/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js')}}"></script>
+<script src="{{asset('admin_asset/dist/js/pages/dashboard2.js')}}"></script>
+<script src="{{asset('admin_asset/dist/js/demo.js')}}"></script>
 <script>
   $(function () {
     

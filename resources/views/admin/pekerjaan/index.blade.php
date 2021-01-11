@@ -4,7 +4,7 @@
 @endsection
 
 @section('css')
-    
+<link rel="stylesheet" href="{{asset('admin_asset/bower_components/bootstrap-colorpicker/dist/css/bootstrap-colorpicker.min.css')}}">
 @endsection
 
 @section('content')
@@ -87,6 +87,17 @@
                   <label>Nama</label>
                   <input type="text" class="form-control" placeholder="Nama" name="nama" required>
                 </div>
+                <div class="form-group">
+                  <label>Warna</label>
+  
+                  <div class="input-group my-colorpicker2">
+                    <input type="text" class="form-control my-colorpicker1" name="warna">
+  
+                    <div class="input-group-addon">
+                      <i></i>
+                    </div>
+                  </div>
+                </div>
               
               <!-- /.card-body -->
 
@@ -119,6 +130,17 @@
                     <label>Nama</label>
                     <input type="text" class="form-control" placeholder="Nama" name="nama" value="{{$item->nama}}" required>
                 </div>
+                <div class="form-group">
+                  <label>Warna</label>
+  
+                  <div class="input-group my-colorpicker2">
+                    <input type="text" class="form-control my-colorpicker1" name="warna" value="{{$item->warna}}">
+  
+                    <div class="input-group-addon">
+                      <i></i>
+                    </div>
+                  </div>
+                </div>
               <!-- /.card-body -->
 
               <div class="modal-footer">
@@ -135,8 +157,12 @@
 @endsection
 
 @section('js')
+<script src="{{asset('admin_asset/bower_components/bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js')}}"></script>
 <script>
 $(document).ready(function(){
+    $('.my-colorpicker1').colorpicker()
+    //color picker with addon
+    $('.my-colorpicker2').colorpicker()
     @if(session()->has('success'))
          toastr.success("{{session('success')}}")
    

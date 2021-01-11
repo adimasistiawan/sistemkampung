@@ -36,11 +36,16 @@ class PekerjaanController extends Controller
     public function store(Request $request)
     {
         $check = Pekerjaan::where('nama', $request->nama)->get();
+        $check2 = Pekerjaan::where('warna', $request->warna)->get();
         if(count($check) > 0){
             return redirect()->route('pekerjaan.index')->with('error', 'Gagal. Nama sudah pernah digunakan ');
         }
+        if(count($check2) > 0){
+            return redirect()->route('pekerjaan.index')->with('error', 'Gagal. Warna sudah pernah digunakan ');
+        }
         Pekerjaan::create([
             'nama' => $request->nama,
+            'warna' => $request->warna,
             'is_delete' => 0
         ]);
 
@@ -80,11 +85,16 @@ class PekerjaanController extends Controller
     {
         $pekerjaan = Pekerjaan::find($id);
         $check = Pekerjaan::where('nama', $request->nama)->where('nama','!=',$pekerjaan->nama)->get();
+        $check2 = Pekerjaan::where('warna', $request->warna)->where('warna','!=',$pekerjaan->warna)->get();
         if(count($check) > 0){
             return redirect()->route('akun-user.index')->with('error', 'Gagal. Nama sudah pernah digunakan ');;
         }
+        if(count($check2) > 0){
+            return redirect()->route('akun-user.index')->with('error', 'Gagal. Warna sudah pernah digunakan ');;
+        }
         $pekerjaan->update([
             'nama' => $request->nama,
+            'warna' => $request->warna,
         ]);
 
         return redirect()->route('pekerjaan.index')->with('success', 'Success');

@@ -165,7 +165,7 @@
                                             <select  id="" class="form-control input-table" required>
                                                 <option value="">--Pilih Pekerjaan--</option>
                                                 @foreach ($pekerjaan as $item)
-                                                <option value="{{$item->id}}" @if ($value->pekerjaan_id == $item->id)selected @endif>{{$item->nama}}</option>
+                                                <option value="{{$item->id}}" @if ($value->pekerjaan_id == $item->id) selected @endif>{{$item->nama}}</option>
                                                 @endforeach
                                             </select>
                                         </td>

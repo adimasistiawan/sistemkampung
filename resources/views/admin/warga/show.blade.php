@@ -53,6 +53,41 @@
                             <td>{{$warga->no_hp}}</td>
                         </tr>
                         <tr height="40px">
+                          <th>Alamat</th>
+                          <td>:</td>
+                          <td>{{$warga->alamat}}</td>
+                        </tr>
+                        <tr height="40px">
+                          <th>Agama</th>
+                          <td>:</td>
+                          <td>{{$warga->agama}}</td>
+                        </tr>
+                        <tr height="40px">
+                          <th>Jenis Kelamin</th>
+                          <td>:</td>
+                          <td>{{$warga->jenis_kelamin}}</td>
+                        </tr>
+                        <tr height="40px">
+                          <th>Pekerjaan</th>
+                          <td>:</td>
+                          <td>{{$warga->pekerjaan->nama}}</td>
+                        </tr>
+                        <tr height="40px">
+                          <th>Tempat Lahir</th>
+                          <td>:</td>
+                          <td>{{$warga->tempat_lahir}}</td>
+                        </tr>
+                        <tr height="40px">
+                          <th>Tanggal Lahir</th>
+                          <td>:</td>
+                          <td>{{$warga->tanggal_lahir}}</td>
+                        </tr>
+                        <tr height="40px">
+                          <th>Status Kawin</th>
+                          <td>:</td>
+                          <td>{{$warga->status_kawin}}</td>
+                        </tr>
+                        <tr height="40px">
                             <th>Email</th>
                             <td>:</td>
                             <td>{{$warga->email}}</td>

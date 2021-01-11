@@ -31,7 +31,7 @@
         <div class="col-xl-12 stretch-card grid-margin">
           <div class="position-relative">
             <img
-              src="{{asset('header/header.jpg')}}"
+              src="{{asset('header/'.$data['foto_header'])}}"
               alt="banner"
               class="img-fluid"
             />
@@ -45,19 +45,7 @@
         
       </div>
       <div class="row" data-aos="fade-up">
-        <div class="col-lg-3 stretch-card grid-margin">
-          <div class="card">
-            <div class="card-body">
-              <h2>Menu</h2>
-              <ul class="vertical-menu">
-                <li><a href="#">Berita</a></li>
-                <li><a href="#">Profil</a></li>
-                <li><a href="#">Data Umum</a></li>
-                <li><a href="#">Lembaga</a></li>
-              </ul>
-            </div>
-          </div>
-        </div>
+        
         <div class="col-lg-9 stretch-card grid-margin">
           <div class="card">
             <div class="card-body">
@@ -70,7 +58,7 @@
                     <img
                       src="{{asset('image_berita/'.$item->foto)}}"
                       alt="thumb"
-                      class="img-fluid"
+                      height="150px" width="200px"
                     />
                   </div>
                   <div class="badge-positioned">
@@ -85,12 +73,12 @@
                   {{$item->judul}}
                 </h2>
                 <div class="fs-13 mb-2">
-                  <span class="mr-2">{{$item->tanggal}} </span>
+                  <span class="mr-2">{{date('d-m-Y',strtotime($item->created_at))}} </span>
                 </div>
                 <p class="mb-0">
                   {!!  \Illuminate\Support\Str::limit($item->isi,150,'...') !!}
                 </p>
-                <a href="">
+                <a href="{{route('berita.detail',$item->id)}}">
                   <h4 class="mb-2 font-weight-600">
                     Selengkapnya
                   </h4>
@@ -103,6 +91,19 @@
 
             
              
+          </div>
+        </div>
+        <div class="col-lg-3  grid-margin">
+          <div class="card">
+            <div class="card-body">
+              <h2>Menu</h2>
+              <ul class="vertical-menu">
+                <li><a href="{{route('berita')}}">Berita</a></li>
+                <li><a href="#">Profil</a></li>
+                <li><a href="#">Data Umum</a></li>
+                <li><a href="#">Lembaga</a></li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
