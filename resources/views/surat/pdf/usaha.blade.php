@@ -58,7 +58,11 @@
     </style>
 </head>
 <body>
-    
+  @if ($watermark)
+  <div style="background-size: cover; background-repeat: no-repeat; background-image: url({{asset('belum.png')}});">
+@else
+  <div>
+@endif
       <div style="text-align: center; ">
         <table>
           <tr>
@@ -157,7 +161,7 @@
           </td>
         </tr>
       </table>  
-      
+    </div>
         
       
 

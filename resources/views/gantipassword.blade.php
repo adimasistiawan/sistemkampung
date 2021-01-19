@@ -15,7 +15,7 @@
     <div class="container">
       
       <div class="row" data-aos="fade-up">
-        <div class="col-lg-3 stretch-card grid-margin">
+        <div class="col-lg-3 grid-margin">
           <div class="card">
             <div class="card-body">
               <h2>Menu</h2>

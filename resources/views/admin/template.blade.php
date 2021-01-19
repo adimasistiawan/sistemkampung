@@ -5,6 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>@yield('title')</title>
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <link rel="shortcut icon" href="{{asset('logo.png')}}">
   <link rel="stylesheet" href="{{asset('admin_asset/bower_components/bootstrap/dist/css/bootstrap.min.css')}}">
   <link rel="stylesheet" href="{{asset('admin_asset/bower_components/font-awesome/css/font-awesome.min.css')}}">
   <link rel="stylesheet" href="{{asset('admin_asset/bower_components/Ionicons/css/ionicons.min.css')}}">
@@ -64,6 +65,9 @@
         <li><a href="{{route('dashboard')}}"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
         <li><a href="{{route('penduduk.index')}}"><i class="fa fa-users"></i> <span>Penduduk</span></a></li>
         <li><a href="{{route('berita.index')}}"><i class="fa fa-newspaper-o"></i> <span>Berita</span></a></li>
+        @if (Auth::guard('admin')->user()->role == "superadmin")
+        <li><a href="{{route('admin.index')}}"><i class="fa fa-user-secret"></i> <span>Akun Admin</span></a></li>
+        @endif
         @php
             $wargabaru = App\Warga::where('status','Belum Diverifikasi')->count();
         @endphp
@@ -88,6 +92,7 @@
             <li><a href="{{route('profil.index')}}"><i class="fa fa-circle-o"></i>Profil</a></li>
             <li><a href="{{route('web.index')}}"><i class="fa fa-circle-o"></i>Web</a></li>
             <li><a href="{{route('pekerjaan.index')}}"><i class="fa fa-circle-o"></i>Pekerjaan</a></li>
+            <li><a href="{{route('ubahakun.index')}}"><i class="fa fa-circle-o"></i>Ubah Akun</a></li>
           </ul>
         </li>
         <li><a href="{{route('logout')}}"><i class="fa fa-sign-out text-red"></i> <span>Logout</span></a></li>

@@ -21,6 +21,7 @@
                 <div class="card-title">
                     <h3>{{date('d-m-Y',strtotime($berita->created_at))}}</h3>
                 </div>
+                
             </div>
             <div class="card-body">
             
@@ -38,7 +39,7 @@
                 />
                 <br>
                 <br>
-                {{date('d-m-Y',strtotime($berita->tanggal))}}
+                {{date('d-m-Y',strtotime($berita->tanggal))}}, Ditulis oleh <b>{{$berita->dibuat_oleh}}</b>
                 <br>
                 <br>
                 {!! $berita->isi !!}

@@ -39,6 +39,7 @@
                             <th class="text-center">Foto</th>
                             <th class="text-center">Judul</th>
                             <th class="text-center">Tanggal</th>
+                            <th class="text-center">Dibuat Oleh</th>
                             <th class="text-center">Aksi</th>
                         </tr>
                     </thead>
@@ -52,6 +53,7 @@
                             <td><img src="{{asset('image_berita/'.$item->foto)}}" width="50px" height="50px" alt=""></td>
                             <td>{{$item->judul}}</td>
                             <td>{{$item->tanggal}}</td>
+                            <td>{{$item->dibuat_oleh}}</td>
                             <td>
                                 <form action="{{route('berita.destroy', $item->id)}}" method="post">
                                     @csrf

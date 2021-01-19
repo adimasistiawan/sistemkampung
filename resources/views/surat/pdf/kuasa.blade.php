@@ -85,79 +85,121 @@
         
         <hr style="border: 2px solid #000;"><br>
 
-        <u><span style=" font-size:19px; font-family: 'CustomFontBold';">SURAT KETERANGAN AHLI WARIS</span></u><br>
-        <span >Nomor : 474 / 501 / K.9 / III / 2020</span><br>
+        <u><span style=" font-size:19px; font-family: 'CustomFontBold';">SURAT KETERANGAN KUASA</span></u><br>
+        {{-- <span >Nomor : 478 / 506 / K.9 / XII / 2020</span><br> --}}
       </div>
-      <br>
       <br>
       <div style="padding-right: 30px">
-        <p>Yang bertanda tangan di bawah ini Kepala Kampung Notoharjo Kecamatan Trimurjo Kabupaten Lampung Tengah menerangkan dengan sesungguhnya bahwa:</p>
-      
+        <p>Yang bertanda tangan di bawah ini:</p>
         <div style="padding-left: 30px">
-          <table>
-            
-            <tr>
-              <td width="200px">Nama</td>
-              <td>:</td>
-              <td width="395px">{{Auth::guard('warga')->user()->nama}} dsfsdfsdfs dsfdsgdfgdf dsd.</td>
-            </tr>
-            <tr>
-              <td>Tempat Tgl. Lahir</td>
-              <td>:</td>
-              <td>{{Auth::guard('warga')->user()->tempat_lahir}}, {{date('d-m-Y',strtotime(Auth::guard('warga')->user()->tanggal_lahir))}}</td>
-            </tr>
-            <tr>
-              <td>Bangsa/Agama</td>
-              <td>:</td>
-              <td>Indonesia/{{Auth::guard('warga')->user()->agama}}</td>
-            </tr>
-            <tr>
-              <td>Pekerjaan</td>
-              <td>:</td>
-              <td>{{Auth::guard('warga')->user()->pekerjaan->nama}}</td>
-            </tr>
-            <tr>
-              <td>NIK</td>
-              <td>:</td>
-              <td>{{Auth::guard('warga')->user()->nik}}</td>
-            </tr>
-            <tr>
-              <td>Alamat</td>
-              <td>:</td>
-              <td>{{Auth::guard('warga')->user()->alamat}}</td>
-            </tr>
-            
-          </table>
+            <table>
+              
+              <tr>
+                <td width="200px">Nama</td>
+                <td>:</td>
+                <td width="395px">{{Auth::guard('warga')->user()->nama}}.</td>
+              </tr>
+              <tr>
+                <td>Tempat Tgl. Lahir</td>
+                <td>:</td>
+                <td>{{Auth::guard('warga')->user()->tempat_lahir}}, {{date('d-m-Y',strtotime(Auth::guard('warga')->user()->tanggal_lahir))}}</td>
+              </tr>
+              <tr>
+                <td>Bangsa/Agama</td>
+                <td>:</td>
+                <td>Indonesia/{{Auth::guard('warga')->user()->agama}}</td>
+              </tr>
+              <tr>
+                <td>Pekerjaan</td>
+                <td>:</td>
+                <td>{{Auth::guard('warga')->user()->pekerjaan->nama}}</td>
+              </tr>
+              <tr>
+                <td>NIK</td>
+                <td>:</td>
+                <td>{{Auth::guard('warga')->user()->nik}}</td>
+              </tr>
+              <tr>
+                <td>Alamat</td>
+                <td>:</td>
+                <td>{{Auth::guard('warga')->user()->alamat}}</td>
+              </tr>
+              
+            </table>
+          </div>
+          <br>
+        <p>Dengan ini memberikan kuasa kepada:</p>
+          <div style="padding-left: 30px">
+            <table>
+              
+              <tr>
+                <td width="200px">Nama</td>
+                <td>:</td>
+                <td width="395px">{{$data->nama}}.</td>
+              </tr>
+              <tr>
+                <td>Tempat Tgl. Lahir</td>
+                <td>:</td>
+                <td>{{$data->tempat_lahir}}, {{date('d-m-Y',strtotime($data->tanggal_lahir))}}</td>
+              </tr>
+              <tr>
+                <td>Bangsa/Agama</td>
+                <td>:</td>
+                <td>Indonesia/{{$data->agama}}</td>
+              </tr>
+              <tr>
+                <td>Pekerjaan</td>
+                <td>:</td>
+                <td>{{$data->pekerjaan}}</td>
+              </tr>
+              <tr>
+                <td>NIK</td>
+                <td>:</td>
+                <td>{{$data->nik}}</td>
+              </tr>
+              <tr>
+                <td>Alamat</td>
+                <td>:</td>
+                <td>{{$data->alamat}}</td>
+              </tr>
+              
+            </table>
         </div>
-        <p>Nama tersebut benar ahli waris dari <b>{{$orang}} {{$nama}}</b> yang selama ini dalam pengawasan kami</p>
-        <p>Surat keterangan ini diberikan kepada yang bersangkutan, akan digunakan untuk <b>{{$untuk}}</b></p>
-        <br>
+        <p>Digunakan untuk <b>{{$data->untuk}}</b></p>
         <p>Demikian surat ini kami buat dengan sebenarnya untuk dapat dipergunakan sebagaimana mestinya</p>
       </div>
-      
-      <br>
-      
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      
       <table width="100%" >
         <tr>
-          <td width="200px">
-            &nbsp;
+          <td width="200px" style="text-align: center;">
+            <br>
+            <br>
+            <p>YANG MENERIMA KUASA</p>
+            <br>
+            <br>
+            <br>
+            <u>{{$data->nama}}</u>
           </td>
-          <td width="200px">
-            &nbsp;
-          </td>
-          <td width="300px" style="text-align: center;">
-            <p>Notoharjo, {{date('d M Y',strtotime($tgl))}}</p>
+          <td width="200px" style="text-align: center;">
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <p>Mengetahui,</p>
             <p>Kepala Kampung Notoharjo</p>
             <br>
             <br>
             <br>
             <u>{{$dataprofil['nama_ketua_kampung']}}</u>
+          </td>
+          <td width="200px" style="text-align: center;">
+            <p>Notoharjo, {{date('d M Y',strtotime($tgl))}}</p>
+            <p>YANG MEMBERI KUASA</p>
+            <br>
+            <br>
+            <br>
+            <u>{{Auth::guard('warga')->user()->nama}}</u>
           </td>
         </tr>
       </table>  

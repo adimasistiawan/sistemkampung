@@ -85,8 +85,8 @@
         
         <hr style="border: 2px solid #000;"><br>
 
-        <u><span style=" font-size:19px; font-family: 'CustomFontBold';">SURAT KETERANGAN AHLI WARIS</span></u><br>
-        <span >Nomor : 474 / 501 / K.9 / III / 2020</span><br>
+        <u><span style=" font-size:19px; font-family: 'CustomFontBold';">SURAT KETERANGAN TANAH</span></u><br>
+        <span >Nomor : 475 / 511 / K.9 / XII / 2020</span><br>
       </div>
       <br>
       <br>
@@ -99,13 +99,18 @@
             <tr>
               <td width="200px">Nama</td>
               <td>:</td>
-              <td width="395px">{{Auth::guard('warga')->user()->nama}} dsfsdfsdfs dsfdsgdfgdf dsd.</td>
+              <td width="395px">{{Auth::guard('warga')->user()->nama}}.</td>
             </tr>
             <tr>
               <td>Tempat Tgl. Lahir</td>
               <td>:</td>
               <td>{{Auth::guard('warga')->user()->tempat_lahir}}, {{date('d-m-Y',strtotime(Auth::guard('warga')->user()->tanggal_lahir))}}</td>
             </tr>
+            <tr>
+                <td>Jenis Kelamin</td>
+                <td>:</td>
+                <td>{{Auth::guard('warga')->user()->jenis_kelamin}}</td>
+              </tr>
             <tr>
               <td>Bangsa/Agama</td>
               <td>:</td>
@@ -122,6 +127,11 @@
               <td>{{Auth::guard('warga')->user()->nik}}</td>
             </tr>
             <tr>
+                <td>Pekerjaan</td>
+                <td>:</td>
+                <td>{{Auth::guard('warga')->user()->pekerjaan->nama}}</td>
+              </tr>
+            <tr>
               <td>Alamat</td>
               <td>:</td>
               <td>{{Auth::guard('warga')->user()->alamat}}</td>
@@ -129,8 +139,8 @@
             
           </table>
         </div>
-        <p>Nama tersebut benar ahli waris dari <b>{{$orang}} {{$nama}}</b> yang selama ini dalam pengawasan kami</p>
-        <p>Surat keterangan ini diberikan kepada yang bersangkutan, akan digunakan untuk <b>{{$untuk}}</b></p>
+        <p>Nama tersebut benar penduduk Kampung Notoharjo Kecamatan Trimurjo Kabupaten Lampung Tengah yang selama ini dalam pengawasan kami, dan benar memiliki sebidang Tanah dengan luas <b>{{$luas_tanah}} m2</b> yang terletak di <b>{{$alamat}}</b></p>
+        
         <br>
         <p>Demikian surat ini kami buat dengan sebenarnya untuk dapat dipergunakan sebagaimana mestinya</p>
       </div>

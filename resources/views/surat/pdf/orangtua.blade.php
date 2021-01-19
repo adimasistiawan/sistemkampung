@@ -59,11 +59,11 @@
 </head>
 <body>
   @if ($watermark)
-  <div style="background-size: cover; background-repeat: no-repeat; background-image: url({{asset('belum.png')}});">
-@else
-  <div>
-@endif
-      <div style="text-align: center; ">
+    <div style="background-size: cover; background-repeat: no-repeat; background-image: url({{asset('belum.png')}});">
+  @else
+    <div>
+  @endif
+      <div style="text-align: center;">
         <table>
           <tr>
             <td width="150px" align="center">
@@ -85,13 +85,13 @@
         
         <hr style="border: 2px solid #000;"><br>
 
-        <u><span style=" font-size:19px; font-family: 'CustomFontBold';">SURAT KETERANGAN AHLI WARIS</span></u><br>
-        <span >Nomor : 474 / 501 / K.9 / III / 2020</span><br>
+        <u><span style=" font-size:19px; font-family: 'CustomFontBold';">SURAT KETERANGAN MENGURUS ORANG TUA</span></u><br>
+        <span >Nomor : 474 / 391 / K.9 / X / 2015</span><br>
       </div>
       <br>
       <br>
       <div style="padding-right: 30px">
-        <p>Yang bertanda tangan di bawah ini Kepala Kampung Notoharjo Kecamatan Trimurjo Kabupaten Lampung Tengah menerangkan dengan sesungguhnya bahwa:</p>
+        <p>Yang bertanda tangan dibawah ini Kepala Kampung Notoharjo Kecamatan Trimurjo Kabupaten Lampung Tengah menerangkan dengan sesungguhnya bahwa :</p>
       
         <div style="padding-left: 30px">
           <table>
@@ -99,7 +99,7 @@
             <tr>
               <td width="200px">Nama</td>
               <td>:</td>
-              <td width="395px">{{Auth::guard('warga')->user()->nama}} dsfsdfsdfs dsfdsgdfgdf dsd.</td>
+              <td width="395px">{{Auth::guard('warga')->user()->nama}}.</td>
             </tr>
             <tr>
               <td>Tempat Tgl. Lahir</td>
@@ -117,11 +117,6 @@
               <td>{{Auth::guard('warga')->user()->pekerjaan->nama}}</td>
             </tr>
             <tr>
-              <td>NIK</td>
-              <td>:</td>
-              <td>{{Auth::guard('warga')->user()->nik}}</td>
-            </tr>
-            <tr>
               <td>Alamat</td>
               <td>:</td>
               <td>{{Auth::guard('warga')->user()->alamat}}</td>
@@ -129,8 +124,8 @@
             
           </table>
         </div>
-        <p>Nama tersebut benar ahli waris dari <b>{{$orang}} {{$nama}}</b> yang selama ini dalam pengawasan kami</p>
-        <p>Surat keterangan ini diberikan kepada yang bersangkutan, akan digunakan untuk <b>{{$untuk}}</b></p>
+        <p>Nama tersebut benar penduduk Kampung Notoharjo Kecamatan Trimurjo Kabupaten Lampung Tengah yang selama ini dalam pengawasan kami, dan benar orang tersebut pada saat ini sedang mengurus orang tua.</p>
+        
         <br>
         <p>Demikian surat ini kami buat dengan sebenarnya untuk dapat dipergunakan sebagaimana mestinya</p>
       </div>
@@ -161,8 +156,7 @@
           </td>
         </tr>
       </table>  
-  </div>
-        
+  </div> 
       
 
 

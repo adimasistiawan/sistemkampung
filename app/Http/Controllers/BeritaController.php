@@ -44,6 +44,7 @@ class BeritaController extends Controller
 
         Berita::create([
             'foto' => $name,
+            'dibuat_oleh' => Auth::guard('admin')->user()->nama,
             'judul' => $request->judul,
             'tanggal' => $request->tanggal,
             'isi' => $request->isi,
