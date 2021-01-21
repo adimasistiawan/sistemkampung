@@ -64,118 +64,97 @@
   <div>
 @endif
       <div style="text-align: center; ">
+        <table>
+          <tr>
+            <td width="150px" align="center">
+              <img src="{{asset('logo.png')}}" alt="" width="80px" height="100px">
+            </td>
+            <td width="300px" align="center" style="font-size: 24px">
+              <span style="font-family: 'CustomFontBold'; font-size: 18px">PEMERINTAH KABUPATEN LAMPUNG TENGAH</span><br>
+              <span style="font-size: 18px">KECAMATAN TRIMURJO</span><br>
+              <span style="font-size: 18px">KAMPUNG NOTOHARJO</span><br>
+              <table>
+                <tr>
+                  <td align="right"> <i> Alamat: Jl. Irisigasi Punggur Utara</i></td>
+                  <td width="150px" align="right"> <i>Kode Pos: 34172</i> </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </table>
         
+        <hr style="border: 2px solid #000;"><br>
 
-        <u><span style=" font-size:19px; font-family: 'CustomFontBold';">SURAT KETERANGAN JUAL BELI</span></u><br>
-        {{-- <span >Nomor : 478 / 506 / K.9 / XII / 2020</span><br> --}}
+        <u><span style=" font-size:19px; font-family: 'CustomFontBold';">SURAT KETERANGAN KEHILANGAN</span></u><br>
+        <span >Nomor : 474 / 500 / K.9 / XI / 2020</span><br>
       </div>
       <br>
+      <br>
       <div style="padding-right: 30px">
-        <p>Yang bertanda tangan di bawah ini:</p>
+        <p>Yang bertanda tangan di bawah ini Kepala Kampung Notoharjo Kecamatan Trimurjo Kabupaten Lampung Tengah menerangkan dengan sesungguhnya bahwa:</p>
+      
         <div style="padding-left: 30px">
-            <table>
-              
-              <tr>
-                <td width="200px">Nama</td>
-                <td>:</td>
-                <td width="395px">{{Auth::guard('warga')->user()->nama}}.</td>
-              </tr>
-              <tr>
-                <td>Tempat Tgl. Lahir</td>
-                <td>:</td>
-                <td>{{Auth::guard('warga')->user()->tempat_lahir}}, {{date('d-m-Y',strtotime(Auth::guard('warga')->user()->tanggal_lahir))}}</td>
-              </tr>
-              <tr>
-                <td>Jenis Kelamin</td>
-                <td>:</td>
-                <td>{{Auth::guard('warga')->user()->jenis_kelamin}}</td>
-              </tr>
-              <tr>
-                <td>Alamat</td>
-                <td>:</td>
-                <td>{{Auth::guard('warga')->user()->alamat}}</td>
-              </tr>
-              <tr>
-                <td></td>
-                <td></td>
-                <td>Disebut pihak pertama (ke I)</td>
-              </tr>
-            </table>
-          </div>
-          <br>
-        <br>
-          <div style="padding-left: 30px">
-            <table>
-              
-              <tr>
-                <td width="200px">Nama</td>
-                <td>:</td>
-                <td width="395px">{{$data->nama}}.</td>
-              </tr>
-              <tr>
-                <td>Tempat Tgl. Lahir</td>
-                <td>:</td>
-                <td>{{$data->tempat_lahir}}, {{date('d-m-Y',strtotime($data->tanggal_lahir))}}</td>
-              </tr>
-              <tr>
-                <td>Jenis Kelamin</td>
-                <td>:</td>
-                <td>{{$data->jenis_kelamin}}</td>
-              </tr>
-
-              <tr>
-                <td>Alamat</td>
-                <td>:</td>
-                <td>{{$data->alamat}}</td>
-              </tr>
-              <tr>
-                <td></td>
-                <td></td>
-                <td>Disebut pihak pertama (ke II)</td>
-              </tr>
-            </table>
+          <table>
+            
+            <tr>
+              <td width="200px">Nama</td>
+              <td>:</td>
+              <td width="395px">{{Auth::guard('warga')->user()->nama}}.</td>
+            </tr>
+            <tr>
+              <td>Tempat Tgl. Lahir</td>
+              <td>:</td>
+              <td>{{Auth::guard('warga')->user()->tempat_lahir}}, {{date('d-m-Y',strtotime(Auth::guard('warga')->user()->tanggal_lahir))}}</td>
+            </tr>
+            <tr>
+              <td>Bangsa/Agama</td>
+              <td>:</td>
+              <td>Indonesia/{{Auth::guard('warga')->user()->agama}}</td>
+            </tr>
+            
+            <tr>
+              <td>Pekerjaan</td>
+              <td>:</td>
+              <td>{{Auth::guard('warga')->user()->pekerjaan->nama}}</td>
+            </tr>
+            <tr>
+              <td>Alamat</td>
+              <td>:</td>
+              <td>{{Auth::guard('warga')->user()->alamat}}</td>
+            </tr>
+            
+          </table>
         </div>
-        <p>Benar bahwa pihak ke I telah menjual kepada pihak ke II <b>{{$data->menjual}}</b> dengan harga <b>Rp. {{$data->harga}}</b></p>
-        <p>Demikian  surat keterangan jual beli ini dibuat dengan sebenarnya tanpa ada paksaan dari pihak manapun, dan apabila dikemudian hari terdapat permasalahan kami siap menyelesaikan secara kekeluargaan atau hukum yang berlaku. </p>
-        <p>SAKSI :</p>
-        <ol>
-            @foreach ($data->saksi as $item)
-            <li>{{$item == null? " ":$item}}</li>
-            @endforeach
-        </ol>
+        <p>Nama tersebut diatas benar penduduk Kampung Notoharjo Kecamatan Trimurjo Kabupaten Lampung Tengah yang selama ini dalam pengawasan kami dan benar – benar telah ke – Hilangan <b>{{$data->nama_barang}}</b>. Dengan deskripsi sebagai berikut:
+            </p>
+        {!! nl2br($data->deskripsi_barang) !!}
+        <br>
+        <p>Demikian surat ini kami buat dengan sebenarnya untuk dapat dipergunakan sebagaimana mestinya</p>
       </div>
+      
+      <br>
+      
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      
       <table width="100%" >
         <tr>
-          <td width="200px" style="text-align: center;">
-            <br>
-            <br>
-            <p>PIHAK 1</p>
-            <br>
-            <br>
-            <br>
-            <u>{{Auth::guard('warga')->user()->nama}}</u>
+          <td width="200px">
+            &nbsp;
           </td>
-          <td width="200px" style="text-align: center;">
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <p>Mengetahui,</p>
+          <td width="200px">
+            &nbsp;
+          </td>
+          <td width="300px" style="text-align: center;">
+            <p>Notoharjo, {{date('d M Y',strtotime($tgl))}}</p>
             <p>Kepala Kampung Notoharjo</p>
             <br>
             <br>
             <br>
             <u>{{$dataprofil['nama_ketua_kampung']}}</u>
-          </td>
-          <td width="200px" style="text-align: center;">
-            <p>Notoharjo, {{date('d M Y',strtotime($tgl))}}</p>
-            <p>PIHAK 2</p>
-            <br>
-            <br>
-            <br>
-            <u>{{$data->nama}}</u>
           </td>
         </tr>
       </table>  

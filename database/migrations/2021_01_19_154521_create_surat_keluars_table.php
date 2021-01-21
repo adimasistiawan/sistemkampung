@@ -13,9 +13,16 @@ class CreateSuratKeluarsTable extends Migration
      */
     public function up()
     {
-        Schema::create('surat_keluars', function (Blueprint $table) {
+        Schema::create('surat_keluar', function (Blueprint $table) {
             $table->id();
-            $table->string('warga_id');
+            $table->integer('warga_id');
+            $table->string('nomor_surat');
+            $table->date('tanggal');
+            $table->string('perihal');
+            $table->string('penanggung_jawab');
+            $table->string('keterangan');
+            $table->integer('urutan');
+            $table->text('data');
             $table->timestamps();
         });
     }

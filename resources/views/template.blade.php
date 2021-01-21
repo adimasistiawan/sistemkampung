@@ -11,7 +11,8 @@
       rel="stylesheet"
       href="{{asset('assets/vendors/mdi/css/materialdesignicons.min.css')}}">
     <link rel="stylesheet" href="{{asset('assets/vendors/aos/dist/aos.css/aos.css')}}">
-
+    <link rel="stylesheet" href="{{asset('admin_asset/bower_components/font-awesome/css/font-awesome.min.css')}}">
+    <link rel="stylesheet" href="{{asset('admin_asset/plugins/jquery-confirm/css/jquery-confirm.css')}}">
     <!-- End plugin css for this page -->
     <link rel="shortcut icon" href="{{asset('logo.png')}}">
 
@@ -288,6 +289,7 @@
     <script src="{{asset('admin_asset/bower_components/jquery/dist/jquery.min.js')}}"></script>
     <script src="{{asset('assets/vendors/js/vendor.bundle.base.js')}}"></script>
     <script src="{{asset('assets/vendors/aos/dist/aos.js/aos.js')}}"></script>
+    <script src="{{asset('admin_asset/plugins/jquery-confirm/js/jquery-confirm.js')}}"></script>
     <script src="{{asset('assets/js/demo.js')}}"></script>
     @yield('js')
   </body>
