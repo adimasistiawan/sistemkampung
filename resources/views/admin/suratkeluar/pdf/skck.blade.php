@@ -59,7 +59,7 @@
 </head>
 <body>
   @if ($watermark)
-  <div style="background-size: cover; background-repeat: no-repeat; background-image: url({{asset('belum.png')}});">
+  <div style="background-size: cover; background-repeat: no-repeat; background-image: url({{asset('belum_diterima.png')}});">
 @else
   <div>
 @endif
@@ -85,8 +85,39 @@
         
         <hr style="border: 2px solid #000;"><br>
 
-        <u><span style=" font-size:19px; font-family: 'CustomFontBold';">SURAT KETERANGAN TANAH</span></u><br>
-        {{-- <span >Nomor : 475 / 511 / K.9 / XII / 2020</span><br> --}}
+        <table width="100%" >
+            <tr>
+              <td width="250px" style="text-align: center;">
+                <table>
+                    <tr>
+                        <td>Nomor</td>
+                        <td>:</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Lamp</td>
+                        <td>:</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>Perihal</td>
+                        <td>:</td>
+                        <td><b>Permohonan SKCK</b></td>
+                    </tr>
+                </table>
+              </td>
+              <td width="130px" style="text-align: center;">
+              </td>
+              <td width="220px">
+                Notoharjo, {{date('d M Y',strtotime($tgl))}}
+                <br>
+                Kepada
+                <br>
+                Bapak/Ibu KAPOLSEK TRIMURJO
+                <p>Di <b>Simbarwaringin</b></p>
+              </td>
+            </tr>
+          </table>
       </div>
       <br>
       <br>
@@ -99,45 +130,39 @@
             <tr>
               <td width="200px">Nama</td>
               <td>:</td>
-              <td width="395px">{{Auth::guard('warga')->user()->nama}}.</td>
+              <td width="395px">{{$warga->nama}}.</td>
             </tr>
             <tr>
               <td>Tempat Tgl. Lahir</td>
               <td>:</td>
-              <td>{{Auth::guard('warga')->user()->tempat_lahir}}, {{date('d-m-Y',strtotime(Auth::guard('warga')->user()->tanggal_lahir))}}</td>
+              <td>{{$warga->tempat_lahir}}, {{date('d-m-Y',strtotime($warga->tanggal_lahir))}}</td>
             </tr>
-            <tr>
-                <td>Jenis Kelamin</td>
-                <td>:</td>
-                <td>{{Auth::guard('warga')->user()->jenis_kelamin}}</td>
-              </tr>
             <tr>
               <td>Bangsa/Agama</td>
               <td>:</td>
-              <td>Indonesia/{{Auth::guard('warga')->user()->agama}}</td>
+              <td>Indonesia/{{$warga->agama}}</td>
+            </tr>
+            <tr>
+              <td>Pekerjaan</td>
+              <td>:</td>
+              <td>{{$warga->pekerjaan->nama}}</td>
             </tr>
             <tr>
               <td>NIK</td>
               <td>:</td>
-              <td>{{Auth::guard('warga')->user()->nik}}</td>
+              <td>{{$warga->nik}}</td>
             </tr>
-            <tr>
-                <td>Pekerjaan</td>
-                <td>:</td>
-                <td>{{Auth::guard('warga')->user()->pekerjaan->nama}}</td>
-              </tr>
             <tr>
               <td>Alamat</td>
               <td>:</td>
-              <td>{{Auth::guard('warga')->user()->alamat}}</td>
+              <td>{{$warga->alamat}}</td>
             </tr>
             
           </table>
         </div>
-        <p>Nama tersebut benar penduduk Kampung Notoharjo Kecamatan Trimurjo Kabupaten Lampung Tengah yang selama ini dalam pengawasan kami, dan benar memiliki sebidang Tanah dengan luas <b>{{rupiah($data->luas_tanah)}} m2</b> yang terletak di <b>{{$data->alamat}}</b></p>
-        
-        <br>
-        <p>Demikian surat ini kami buat dengan sebenarnya untuk dapat dipergunakan sebagaimana mestinya</p>
+        <p>Nama tersebut benar penduduk Kampung Notoharjo Kec. Trimurjo Kab. Lampung Tengah yang selama ini dalam pengawasan kami beradat istiadat baik belum pernah berurusan dengan pihak kepolisian</p>
+        <p>Sesuai perihal pokok diatas mohon kiranya Bapak/Ibu mengabulkan permohonan ini yang akan digunakan untuk <b>{{$data['untuk']}}.</b></p>
+        <p>Demikian permohonan ini kami sampaikan atas dikabulkannya diucapkan banyak terima kasih.</p>
       </div>
       
       <br>

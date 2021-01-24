@@ -469,6 +469,102 @@
                           
           `)
         }
+
+        else if($(this).val() == "Surat Rekomendasi Nikah"){
+          $('.input-tambahan').empty();
+          $('.input-tambahan').append(`
+          <div class="col-md-8">
+          <div class="form-group">
+              <label  >Nama Lengkap</label>
+              <input type="text" class="form-control" value="{{Auth::guard('warga')->user()->nama}}" disabled>
+          </div>
+          @if(Auth::guard('warga')->user()->jenis_kelamin == "Perempuan")
+          <div class="form-group">
+              <label  >Binti</label>
+              <input type="text" class="form-control" required name="orgtua">
+          </div>
+          @else
+          <div class="form-group">
+              <label  >Bin</label>
+              <input type="text" class="form-control" required name="orgtua">
+          </div>
+          @endif
+          <b>Menikah dengan :</b>
+          <br>
+          <br>
+          <div class="form-group">
+              <label  >Nama Lengkap</label>
+              <input type="text" class="form-control" required name="nama">
+          </div>
+          @if(Auth::guard('warga')->user()->jenis_kelamin != "Perempuan")
+          <div class="form-group">
+              <label  >Binti</label>
+              <input type="text" class="form-control" required name="orgtua2">
+          </div>
+          @else
+          <div class="form-group">
+              <label  >Bin</label>
+              <input type="text" class="form-control" required name="orgtua2">
+          </div>
+          @endif
+          <div class="form-group">
+              <label  >NIK</label>
+              <input type="text" maxlength="16" onkeypress="return validate(event)" class="form-control" required name="nik">
+          </div>
+          <div class="form-group">
+              <label  >Alamat</label>
+              <input type="text" class="form-control" required name="alamat">
+          </div>
+          <div class="form-group">
+                          <label  >Tanggal Lahir</label>
+                          <input type="date" class="form-control" required name="tanggal_lahir">
+            </div>
+          <div class="form-group">
+              <label  >Tempat Lahir</label>
+              <input type="text" class="form-control" required name="tempat_lahir">
+          </div>
+          
+          
+          <div class="form-group">
+              <label  >Pilih Pekerjaan</label>
+              <br>
+              <select name="pekerjaan" class="" required>
+                  <option value="">--Pilih Pekerjaan--</option>
+                  @foreach ($pekerjaan as $item)
+                  <option value="{{$item->nama}}">{{$item->nama}}</option>
+                  @endforeach
+                  
+              </select>
+          </div>
+          <div class="form-group">
+              <label  >Agama</label>
+              <br>
+              <select name="agama" class="" required>
+                  <option value="">--Pilih Agama--</option>
+                  <option value="Islam">Islam</option>
+                  <option value="Kristen">Kristen</option>
+                  <option value="Katolik">Katolik</option>
+                  <option value="Hindu">Hindu</option>
+                  <option value="Budha">Budha</option>
+                  <option value="Konghucu">Konghucu</option>
+                  
+              </select>
+          </div>
+            </div>
+          `)
+        }
+
+        else if($(this).val() == "Surat Permohonan SKCK"){
+          $('.input-tambahan').empty();
+          $('.input-tambahan').append(`
+          <div class="col-md-8">
+          <div class="form-group untuk">
+                          <label  >Digunakan Untuk</label>
+                          <input type="text" class="form-control" required name="untuk">
+            </div>
+        </div>
+          `)
+        }
       })
 
       $(document).on('click','.tambah-saksi',function(){

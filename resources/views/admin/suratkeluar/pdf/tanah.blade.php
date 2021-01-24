@@ -117,11 +117,6 @@
               <td>Indonesia/{{$warga->agama}}</td>
             </tr>
             <tr>
-              <td>Pekerjaan</td>
-              <td>:</td>
-              <td>{{$warga->pekerjaan->nama}}</td>
-            </tr>
-            <tr>
               <td>NIK</td>
               <td>:</td>
               <td>{{$warga->nik}}</td>
