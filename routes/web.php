@@ -55,6 +55,7 @@ Route::group(['middleware' => 'warga'], function () {
     Route::get('/akun/ganti-password', 'ProfilWargaController@gantipassword')->name('gantipassword.warga');
     Route::post('/akun/ganti-password/submit','ProfilWargaController@submitgantipassword')->name('gantipassword.warga.submit');
     Route::get('/akun/surat', 'SuratController@index')->name('surat');
+    Route::get('/akun/surat/buat', 'SuratController@buat')->name('surat.buat');
     Route::post('/akun/surat/submit','SuratController@submit')->name('surat.submit');
 });
 
@@ -77,6 +78,9 @@ Route::group(['middleware' => 'admin'], function () {
     Route::post('/admin/web/store', 'FrontendController@webstore')->name('web.store');
     Route::resource('/admin/warga', 'WargaController');
     Route::resource('/admin/admin', 'AdminController');
+    Route::resource('/admin/suratkeluar', 'SuratKeluarController');
+    Route::get('/admin/suratkeluar/verifikasi/{id}','SuratKeluarController@verifikasi')->name('suratkeluar.verifikasi');
+    Route::get('/admin/suratkeluar/{perihal}/{id}/{watermark}', 'SuratKeluarController@pdf')->name('suratkeluar.pdf');
     Route::get('/admin/ubahakun', 'AdminController@ubahakun')->name('ubahakun.index');
     Route::post('/admin/ubahakun/update/', 'AdminController@ubahakun_update')->name('ubahakun.update');
     Route::get('/admin/warga/verifikasi/{id}','WargaController@verifikasi')->name('warga.verifikasi');

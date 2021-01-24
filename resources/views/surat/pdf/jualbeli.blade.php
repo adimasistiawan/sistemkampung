@@ -135,7 +135,7 @@
               </tr>
             </table>
         </div>
-        <p>Benar bahwa pihak ke I telah menjual kepada pihak ke II <b>{{$data->menjual}}</b> dengan harga <b>Rp. {{$data->harga}}</b></p>
+        <p>Benar bahwa pihak ke I telah menjual kepada pihak ke II <b>{{$data->menjual}}</b> dengan harga <b>Rp. {{rupiah($data->harga)}}</b></p>
         <p>Demikian  surat keterangan jual beli ini dibuat dengan sebenarnya tanpa ada paksaan dari pihak manapun, dan apabila dikemudian hari terdapat permasalahan kami siap menyelesaikan secara kekeluargaan atau hukum yang berlaku. </p>
         <p>SAKSI :</p>
         <ol>

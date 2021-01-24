@@ -6,24 +6,32 @@ use Illuminate\Http\Request;
 use PDF;
 use App\Pekerjaan;
 use App\Pengaturan;
+use App\SuratKeluar;
 use Carbon\Carbon;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
+use Auth;
 class SuratController extends Controller
 {
     public function index(){
+        $surat_keluar = SuratKeluar::where('warga_id',Auth::guard('warga')->user()->id)->orderBy('updated_at','desc')->get();
+        return view('surat.index',compact('surat_keluar'));
+    }
+
+    public function buat(){
         $pekerjaan = Pekerjaan::where('is_delete',0)->get();
-        return view('surat.index',compact('pekerjaan'));
+        return view('surat.buat',compact('pekerjaan'));
     }
     
     public function submit(Request $request){
+        $watermark = true;
+        $tgl = Carbon::now();
+        $data = $request;
+        $profil = Pengaturan::all();
+        $dataprofil = json_decode($profil[0]->profil, true);
         if($request->submit == 0){
-            $watermark = true;
-            $tgl = Carbon::now();
-            $data = $request;
-            $profil = Pengaturan::all();
-            $dataprofil = json_decode($profil[0]->profil, true);
+            
             if($request->surat == "Surat Keterangan Kurang Mampu"){
                 $pdf = PDF::loadView('surat.pdf.kurangmampu',compact('tgl','data','dataprofil','watermark'));
                 return $pdf->stream();
@@ -81,7 +89,19 @@ class SuratController extends Controller
         
         /// ---- ajukan
         else{
+            $json = json_encode([
+                'tgl' => $tgl,
+                'data' => $data->all(),
+                'dataprofil' => $dataprofil,
+            ]);
+            SuratKeluar::create([
+                'warga_id' => Auth::guard('warga')->user()->id,
+                'tanggal' => $tgl,
+                'perihal' => $request->surat,
+                'data' => $json
+            ]);
 
+            return redirect()->route('surat')->with('success','Pengajuan berhasil. mohon tunggu sampai status Telah Diterima');
         }
         
     }

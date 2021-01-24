@@ -86,7 +86,7 @@
         <hr style="border: 2px solid #000;"><br>
 
         <u><span style=" font-size:19px; font-family: 'CustomFontBold';">SURAT KETERANGAN KEHILANGAN</span></u><br>
-        <span >Nomor : 474 / 500 / K.9 / XI / 2020</span><br>
+        {{-- <span >Nomor : 474 / 500 / K.9 / XI / 2020</span><br> --}}
       </div>
       <br>
       <br>

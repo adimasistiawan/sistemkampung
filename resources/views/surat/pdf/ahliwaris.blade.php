@@ -86,7 +86,7 @@
         <hr style="border: 2px solid #000;"><br>
 
         <u><span style=" font-size:19px; font-family: 'CustomFontBold';">SURAT KETERANGAN AHLI WARIS</span></u><br>
-        <span >Nomor : 474 / 501 / K.9 / III / 2020</span><br>
+        {{-- <span >Nomor : 474 / 501 / K.9 / III / 2020</span><br> --}}
       </div>
       <br>
       <br>
@@ -129,8 +129,8 @@
             
           </table>
         </div>
-        <p>Nama tersebut benar ahli waris dari <b>{{$orang}} {{$nama}}</b> yang selama ini dalam pengawasan kami</p>
-        <p>Surat keterangan ini diberikan kepada yang bersangkutan, akan digunakan untuk <b>{{$untuk}}</b></p>
+        <p>Nama tersebut benar ahli waris dari <b>{{$data->orang}} {{$data->nama}}</b> yang selama ini dalam pengawasan kami</p>
+        <p>Surat keterangan ini diberikan kepada yang bersangkutan, akan digunakan untuk <b>{{$data->untuk}}</b></p>
         <br>
         <p>Demikian surat ini kami buat dengan sebenarnya untuk dapat dipergunakan sebagaimana mestinya</p>
       </div>

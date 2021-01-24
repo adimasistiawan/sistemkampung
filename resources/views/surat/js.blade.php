@@ -70,9 +70,7 @@
             <div class="form-group">
                           <label  >Pukul</label>
                           <input type="text" class="form-control timepicker" placeholder="WIB" value="" id="time" required name="pukul">
-                          <div class="input-group-addon">
-                            <i class="fa fa-clock-o"></i>
-                          </div>
+                          
             </div>
             <div class="form-group">
                           <label  >Bertempat di</label>

@@ -86,7 +86,7 @@
         <hr style="border: 2px solid #000;"><br>
 
         <u><span style=" font-size:19px; font-family: 'CustomFontBold';">SURAT KETERANGAN KEMATIAN</span></u><br>
-        <span >Nomor : 478 / 506 / K.9 / XII / 2020</span><br>
+        {{-- <span >Nomor : 478 / 506 / K.9 / XII / 2020</span><br> --}}
       </div>
       <br>
       <br>

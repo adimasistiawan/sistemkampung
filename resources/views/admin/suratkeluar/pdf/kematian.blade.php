@@ -59,7 +59,7 @@
 </head>
 <body>
   @if ($watermark)
-  <div style="background-size: cover; background-repeat: no-repeat; background-image: url({{asset('belum.png')}});">
+  <div style="background-size: cover; background-repeat: no-repeat; background-image: url({{asset('belum_diterima.png')}});">
 @else
   <div>
 @endif
@@ -85,9 +85,10 @@
         
         <hr style="border: 2px solid #000;"><br>
 
-        <u><span style=" font-size:19px; font-family: 'CustomFontBold';">SURAT KETERANGAN PINDAH</span></u><br>
-        {{-- <span >Nomor : 474 / 500 / K.9 / XI / 2020</span><br> --}}
+        <u><span style=" font-size:19px; font-family: 'CustomFontBold';">SURAT KETERANGAN KEMATIAN</span></u><br>
+        {{-- <span >Nomor : 478 / 506 / K.9 / XII / 2020</span><br> --}}
       </div>
+      <br>
       <br>
       <div style="padding-right: 30px">
         <p>Yang bertanda tangan di bawah ini Kepala Kampung Notoharjo Kecamatan Trimurjo Kabupaten Lampung Tengah menerangkan dengan sesungguhnya bahwa:</p>
@@ -98,111 +99,78 @@
             <tr>
               <td width="200px">Nama</td>
               <td>:</td>
-              <td width="395px">{{Auth::guard('warga')->user()->nama}}.</td>
-            </tr>
-            <tr>
-                <td width="200px">Jenis Kelamin</td>
-                <td>:</td>
-                <td width="395px">{{Auth::guard('warga')->user()->jenis_kelamin}}.</td>
+              <td width="395px">{{$data['nama']}}.</td>
             </tr>
             <tr>
               <td>Tempat Tgl. Lahir</td>
               <td>:</td>
-              <td>{{Auth::guard('warga')->user()->tempat_lahir}}, {{date('d-m-Y',strtotime(Auth::guard('warga')->user()->tanggal_lahir))}}</td>
+              <td>{{$data['tempat_lahir']}}, {{date('d-m-Y',strtotime($data['tanggal_lahir']))}}</td>
             </tr>
             <tr>
               <td>Bangsa/Agama</td>
               <td>:</td>
-              <td>Indonesia/{{Auth::guard('warga')->user()->agama}}</td>
+              <td>Indonesia/{{$data['agama']}}</td>
             </tr>
-            
             <tr>
               <td>Pekerjaan</td>
               <td>:</td>
-              <td>{{Auth::guard('warga')->user()->pekerjaan->nama}}</td>
+              <td>{{$data['pekerjaan']}}</td>
             </tr>
             <tr>
-              <td>Alamat Asal</td>
+              <td>NIK</td>
               <td>:</td>
-              <td>{{Auth::guard('warga')->user()->alamat}}</td>
+              <td>{{$data['nik']}}</td>
+            </tr>
+            <tr>
+              <td>Alamat</td>
+              <td>:</td>
+              <td>{{$data['alamat']}}</td>
+            </tr>
+            
+          </table>
+          <br>
+          <br>
+          <table>
+            
+            <tr>
+              <td width="200px">Meninggal Dunia Pada</td>
+              <td>:</td>
+              <td width="395px">{{date('d-m-Y',strtotime($data['tanggal']))}}</td>
+            </tr>
+            <tr>
+              <td>Pukul</td>
+              <td>:</td>
+              <td>{{$data['pukul']}} WIB</td>
+            </tr>
+            <tr>
+              <td>Bertempat di</td>
+              <td>:</td>
+              <td>{{$data['bertempat']}}</td>
+            </tr>
+            <tr>
+              <td>Dikarenakan</td>
+              <td>:</td>
+              <td>{{$data['dikarenakan']}}</td>
+            </tr>
+            <tr>
+              <td>Dimakamkan di</td>
+              <td>:</td>
+              <td>{{$data['dimakamkan']}}</td>
             </tr>
             
           </table>
         </div>
         <br>
-        Pindah ke :
-        <div style="padding-left: 30px">
-            <table>
-              
-              <tr>
-                <td width="200px">Alamat Tujuan</td>
-                <td>:</td>
-                <td width="395px">{{$data->alamat_tujuan}}</td>
-              </tr>
-              <tr>
-                  <td width="200px">Desa / Kelurahan</td>
-                  <td>:</td>
-                  <td width="395px">{{$data->kelurahan}}</td>
-              </tr>
-              <tr>
-                <td width="200px">Kecamatan</td>
-                <td>:</td>
-                <td width="395px">{{$data->kecamatan}}</td>
-            </tr>
-            <tr>
-                <td width="200px">Kabupaten / Kota</td>
-                <td>:</td>
-                <td width="395px">{{$data->kabupaten}}</td>
-            </tr>
-            <tr>
-                <td width="200px">Provinsi</td>
-                <td>:</td>
-                <td width="395px">{{$data->provinsi}}</td>
-            </tr>
-            <tr>
-                <td width="200px">Alasan Pindah</td>
-                <td>:</td>
-                <td width="395px">{{$data->alasan_pindah}}</td>
-            </tr>
-              
-            </table>
-            
-          </div>
-          <br>
-          Pengikut :
-          <table  class="table"style="width: 80%; border:1px solid #000000;">
-            <tr class="tr">
-              <td class="th" width="50px" style="text-align: center; font-family: 'CustomFontBold';">No</td>
-              <td class="th" width="200px" style="text-align: center; font-family: 'CustomFontBold';">Nama</td>
-              <td class="th" width="200px" style="text-align: center; font-family: 'CustomFontBold';">Jenis Kelamin</td>
-              <td class="th" width="50px" style="text-align: center; font-family: 'CustomFontBold';">Umur</td>
-              <td class="th" style="text-align: center; font-family: 'CustomFontBold';" width="200px">Hubungan Keluarga</td>
-            </tr>
-              <?php $no = 1?>
-              
-                @for ($i = 0; $i < count($data->nama); $i++)
-                  <tr class="tr" style=border:1px solid #000000;">
-                      <td class="td" style="text-align: center;">
-                          {{$no}}
-                      </td>
-                      <td class="td">
-                          {{$data->nama[$i]}}
-                      </td>
-                      <td class="td" style="text-align: center;">
-                        {{$data->jenis_kelamin[$i]}}
-                      </td>
-                      <td class="td" style="text-align: center;">
-                        {{$data->umur[$i]}}
-                      </td>
-                      <td class="td" style="text-align: center;">
-                        {{$data->hubungan_keluarga[$i]}}
-                      </td>
-                  </tr>
-                  <?php $no++?>
-              @endfor
-          </table>
         <p>Demikian surat ini kami buat dengan sebenarnya untuk dapat dipergunakan sebagaimana mestinya</p>
       </div>
+      
+      <br>
+      
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
       
       <table width="100%" >
         <tr>

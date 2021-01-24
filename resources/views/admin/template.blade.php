@@ -65,6 +65,20 @@
         <li><a href="{{route('dashboard')}}"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
         <li><a href="{{route('penduduk.index')}}"><i class="fa fa-users"></i> <span>Penduduk</span></a></li>
         <li><a href="{{route('berita.index')}}"><i class="fa fa-newspaper-o"></i> <span>Berita</span></a></li>
+        @php
+            $suratkeluar = App\SuratKeluar::where('status','Belum Diterima')->count();
+        @endphp
+        <li>
+          <a href="{{route('suratkeluar.index')}}">
+            <i class="fa fa-file"></i> 
+            <span>Surat Keluar</span>
+            @if ($suratkeluar > 0)
+            <span class="pull-right-container">
+              <span class="label label-danger pull-right">{{$suratkeluar}}</span>
+            </span>
+           @endif
+          </a>
+        </li>
         @if (Auth::guard('admin')->user()->role == "superadmin")
         <li><a href="{{route('admin.index')}}"><i class="fa fa-user-secret"></i> <span>Akun Admin</span></a></li>
         @endif
@@ -128,6 +142,15 @@
   $(function () {
     
     $('#datatable').DataTable({
+      'paging'      : true,
+      'lengthChange': true,
+      'searching'   : true,
+      'ordering'    : true,
+      'info'        : true,
+      'autoWidth'   : true
+    })
+
+    $('#datatable2').DataTable({
       'paging'      : true,
       'lengthChange': true,
       'searching'   : true,

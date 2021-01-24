@@ -3,51 +3,14 @@
     Surat | Kampung Notoharjo
 @endsection
 @section('css')
-  <link rel="stylesheet" href="{{asset('time.css')}}">
-  <link rel="stylesheet" href="{{asset('admin_asset/plugins/timepicker/bootstrap-timepicker.min.css')}}">
-  
- <style>
-     .form-control {
-         height: 10px !important;
-     }
-     #slide-wrap {
-    margin:0 auto;
-    overflow: auto;
-}
-#inner-wrap {
-    float:left;
-    margin-right:-30000px;    
-    width: auto;
-}
-div.horizontal-fields .btn{
-  padding: 6px;
-}
-div.horizontal-fields input,
-div.horizontal-fields textarea,
-div.horizontal-fields label {
-    width: auto;
-    height: 10px !important;
-    border: 1px solid #e6e7e8;
-    padding: 0.875rem 1.375rem;
-    font-size: 0.875rem;
-    font-weight: 400;
-    line-height: 1;
-    color: #495057;
-    background-color: #ffffff;
-    background-clip: padding-box;
-    border-radius: 2px;
-    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-}
+<link rel="stylesheet" href="{{asset('admin_asset/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css')}}">
+<style>
+    .form-control {
+        height: 10px !important;
+    }
+    .pagination{display:inline-block;padding-left:0;margin:20px 0;border-radius:4px}.pagination>li{display:inline}.pagination>li>a,.pagination>li>span{position:relative;float:left;padding:6px 12px;margin-left:-1px;line-height:1.42857143;color:#337ab7;text-decoration:none;background-color:#fff;border:1px solid #ddd}.pagination>li>a:focus,.pagination>li>a:hover,.pagination>li>span:focus,.pagination>li>span:hover{z-index:2;color:#23527c;background-color:#eee;border-color:#ddd}.pagination>li:first-child>a,.pagination>li:first-child>span{margin-left:0;border-top-left-radius:4px;border-bottom-left-radius:4px}.pagination>li:last-child>a,.pagination>li:last-child>span{border-top-right-radius:4px;border-bottom-right-radius:4px}.pagination>.active>a,.pagination>.active>a:focus,.pagination>.active>a:hover,.pagination>.active>span,.pagination>.active>span:focus,.pagination>.active>span:hover{z-index:3;color:#fff;cursor:default;background-color:#337ab7;border-color:#337ab7}.pagination>.disabled>a,.pagination>.disabled>a:focus,.pagination>.disabled>a:hover,.pagination>.disabled>span,.pagination>.disabled>span:focus,.pagination>.disabled>span:hover{color:#777;cursor:not-allowed;background-color:#fff;border-color:#ddd}.pagination-lg>li>a,.pagination-lg>li>span{padding:10px 16px;font-size:18px;line-height:1.3333333}.pagination-lg>li:first-child>a,.pagination-lg>li:first-child>span{border-top-left-radius:6px;border-bottom-left-radius:6px}.pagination-lg>li:last-child>a,.pagination-lg>li:last-child>span{border-top-right-radius:6px;border-bottom-right-radius:6px}.pagination-sm>li>a,.pagination-sm>li>span{padding:5px 10px;font-size:12px;line-height:1.5}.pagination-sm>li:first-child>a,.pagination-sm>li:first-child>span{border-top-left-radius:3px;border-bottom-left-radius:3px}.pagination-sm>li:last-child>a,.pagination-sm>li:last-child>span{border-top-right-radius:3px;border-bottom-right-radius:3px}.pager{padding-left:0;margin:20px 0;text-align:center;list-style:none}.pager li{display:inline}.pager li>a,.pager li>span{display:inline-block;padding:5px 14px;background-color:#fff;border:1px solid #ddd;border-radius:15px}.pager li>a:focus,.pager li>a:hover{text-decoration:none;background-color:#eee}.pager .next>a,.pager .next>span{float:right}.pager .previous>a,.pager .previous>span{float:left}.pager .disabled>a,.pager .disabled>a:focus,.pager .disabled>a:hover,.pager .disabled>span{color:#777;cursor:not-allowed;background-color:#fff}
+</style>
 
-/* Horizontal fields is the class which is not re-sizing it's with correctly */
-.horizontal-fields {
-    display: block;
-}
-
-.service-additional-fields {
-    display:inline-block;
-}
- </style>
 @endsection
 @section('content')
 
@@ -77,63 +40,61 @@ div.horizontal-fields label {
             <div class="card-body">
               
               <div class="row">
-                <div class="col-sm-12  grid-margin">
-                    @if(session('error'))
-                        <div class="alert alert-danger">
-                            {{session('error')}}
-                        </div>
-                    @elseif(session('success'))
-                        <div class="alert alert-success">
-                            {{session('success')}}
-                        </div>
-                    @endif
-                    <form class="form" action="{{route('surat.submit')}}" method="POST">
-                        @csrf
-                        <div class="col-md-8">
-                        <div class="form-group">
-                            <label  >Pilih Surat</label>
-                            <br>
-                            <select name="surat" class="surat" required>
-                                <option value="">--Pilih Surat--</option>
-                                <option value="Surat Keterangan Pengantar">Surat Keterangan Pengantar</option>
-                                <option value="Surat Keterangan Pindah">Surat Keterangan Pindah</option>
-                                <option value="Surat Keterangan Kurang Mampu">Surat Keterangan Kurang Mampu</option>
-                                <option value="Surat Keterangan Kelahiran">Surat Keterangan Kelahiran</option>
-                                <option value="Surat Keterangan Kematian">Surat Keterangan Kematian</option>
-                                <option value="Surat Keterangan Usaha">Surat Keterangan Usaha</option>
-                                <option value="Surat Keterangan Ahli Waris">Surat Keterangan Ahli Waris</option>
-                                <option value="Surat Keterangan Tanah">Surat Keterangan Tanah</option>
-                                <option value="Surat Keterangan Nikah">Surat Keterangan Nikah</option>
-                                <option value="Surat Keterangan Jual Beli">Surat Keterangan Jual Beli</option>
-                                <option value="Surat Keterangan KK">Surat Keterangan KK</option>
-                                <option value="Surat Keterangan SKCK">Surat Keterangan SKCK</option>
-                                <option value="Surat Keterangan Kuasa">Surat Keterangan Kuasa</option>
-                                <option value="Surat Keterangan Izin Penelitian">Surat Keterangan Izin Penelitian</option>
-                                <option value="Surat Pernyataan Hiburan">Surat Pernyataan Hiburan</option>
-                                <option value="Surat Keterangan Mengurus Orang Tua">Surat Keterangan Mengurus Orang Tua</option>
-                                <option value="Surat Keterangan Kehilangan">Surat Keterangan Kehilangan</option>
-                                <option value="Surat Keterangan Jalan">Surat Keterangan Jalan</option>
-                            </select>
-                        </div>
+                <div class="col-sm-12 grid-margin">
+                  @if(session('error'))
+                  <div class="alert alert-danger">
+                      {{session('error')}}
+                  </div>
+                  @elseif(session('success'))
+                      <div class="alert alert-success">
+                          {{session('success')}}
                       </div>
-                        
-                        <div class="input-tambahan">
-                          
-                        </div>
-                        <br>
-                        <br>
-                        <br>
-                        <button type="submit" class="btn btn-warning" onclick="this.form.target='_blank';return true;" name="submit" value="0">Lihat Surat</button>
-                        
-                        <p>Mohon cek isi surat terlebih dahulu sebelum diajukan</p>
+                  @endif
+                    <a href="{{route('surat.buat')}}" class="btn btn-primary">Buat Surat</a>
+                    <br>
+                    <br>
+                    <div class="table-responsive">
+                      <table id="datatable" class="table table-bordered table-hover" width="100%">
+                        <thead>
+                          <tr>
+                            <th>No</th>
+                            <th>Tanggal</th>
+                            <th>Nama Surat</th>
+                            <th>Status</th>
+                            <th>Keterangan</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          @php
+                              $no = 1;
+                          @endphp
+                          @foreach($surat_keluar as $value)
+                          <tr>
+                            <td>{{$no}}</td>
+                            <td>{{{date('d-m-Y',strtotime($value->tanggal))}}}</td>
+                            <td>{{$value->perihal}}</td>
+                            <td>
+                              @if ($value->status == "Belum Diterima")
+                                  <span class="badge badge-warning text-white">Belum Diterima</span>
+                              @elseif ($value->status == "Ditolak")
+                                  <span class="badge badge-danger">Ditolak</span>
+                              @else
+                                  <span class="badge badge-success">Telah Diterima</span>
+                              @endif
+                            </td>
+                            <td>{{$value->keterangan}}</td>
+                          </tr>
+                          @php
+                              $no++;
+                          @endphp
+                          @endforeach
+                        </tbody>
+                      </table>
+                    </div>
                     
+                    </div>
                 </div>
-              </div>
             </div>
-            <div class="card-footer">
-              <button type="submit" name="submit" value="1" onclick="return confirm('Apakah kamu yakin ingin mengajukan surat')" class="btn btn-primary">Ajukan Surat</button>
-            </div>
-          </form>
           </div>
         </div>
       </div>
@@ -144,7 +105,16 @@ div.horizontal-fields label {
 @endsection
 
 @section('js')
-  <script src="{{asset('time.js')}}"></script>
-  <script src="{{asset('admin_asset/plugins/timepicker/bootstrap-timepicker.min.js')}}"></script>
-  @include('surat.js')
+<script src="{{asset('admin_asset/bower_components/datatables.net/js/jquery.dataTables.min.js')}}"></script>
+<script src="{{asset('admin_asset/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js')}}"></script>
+<script>
+    $('#datatable').DataTable({
+      'paging'      : true,
+      'lengthChange': false,
+      'searching'   : true,
+      'ordering'    : false,
+      'info'        : false,
+      'autoWidth'   : true
+    })
+</script>
 @endsection

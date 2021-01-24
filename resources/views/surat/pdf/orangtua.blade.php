@@ -86,7 +86,7 @@
         <hr style="border: 2px solid #000;"><br>
 
         <u><span style=" font-size:19px; font-family: 'CustomFontBold';">SURAT KETERANGAN MENGURUS ORANG TUA</span></u><br>
-        <span >Nomor : 474 / 391 / K.9 / X / 2015</span><br>
+        {{-- <span >Nomor : 474 / 391 / K.9 / X / 2015</span><br> --}}
       </div>
       <br>
       <br>

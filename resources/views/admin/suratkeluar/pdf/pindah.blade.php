@@ -59,7 +59,7 @@
 </head>
 <body>
   @if ($watermark)
-  <div style="background-size: cover; background-repeat: no-repeat; background-image: url({{asset('belum.png')}});">
+  <div style="background-size: cover; background-repeat: no-repeat; background-image: url({{asset('belum_diterima.png')}});">
 @else
   <div>
 @endif
@@ -98,33 +98,33 @@
             <tr>
               <td width="200px">Nama</td>
               <td>:</td>
-              <td width="395px">{{Auth::guard('warga')->user()->nama}}.</td>
+              <td width="395px">{{$warga->nama}}.</td>
             </tr>
             <tr>
                 <td width="200px">Jenis Kelamin</td>
                 <td>:</td>
-                <td width="395px">{{Auth::guard('warga')->user()->jenis_kelamin}}.</td>
+                <td width="395px">{{$warga->jenis_kelamin}}.</td>
             </tr>
             <tr>
               <td>Tempat Tgl. Lahir</td>
               <td>:</td>
-              <td>{{Auth::guard('warga')->user()->tempat_lahir}}, {{date('d-m-Y',strtotime(Auth::guard('warga')->user()->tanggal_lahir))}}</td>
+              <td>{{$warga->tempat_lahir}}, {{date('d-m-Y',strtotime($warga->tanggal_lahir))}}</td>
             </tr>
             <tr>
               <td>Bangsa/Agama</td>
               <td>:</td>
-              <td>Indonesia/{{Auth::guard('warga')->user()->agama}}</td>
+              <td>Indonesia/{{$warga->agama}}</td>
             </tr>
             
             <tr>
               <td>Pekerjaan</td>
               <td>:</td>
-              <td>{{Auth::guard('warga')->user()->pekerjaan->nama}}</td>
+              <td>{{$warga->pekerjaan->nama}}</td>
             </tr>
             <tr>
               <td>Alamat Asal</td>
               <td>:</td>
-              <td>{{Auth::guard('warga')->user()->alamat}}</td>
+              <td>{{$warga->alamat}}</td>
             </tr>
             
           </table>
@@ -137,32 +137,32 @@
               <tr>
                 <td width="200px">Alamat Tujuan</td>
                 <td>:</td>
-                <td width="395px">{{$data->alamat_tujuan}}</td>
+                <td width="395px">{{$data['alamat_tujuan']}}</td>
               </tr>
               <tr>
                   <td width="200px">Desa / Kelurahan</td>
                   <td>:</td>
-                  <td width="395px">{{$data->kelurahan}}</td>
+                  <td width="395px">{{$data['kelurahan']}}</td>
               </tr>
               <tr>
                 <td width="200px">Kecamatan</td>
                 <td>:</td>
-                <td width="395px">{{$data->kecamatan}}</td>
+                <td width="395px">{{$data['kecamatan']}}</td>
             </tr>
             <tr>
                 <td width="200px">Kabupaten / Kota</td>
                 <td>:</td>
-                <td width="395px">{{$data->kabupaten}}</td>
+                <td width="395px">{{$data['kabupaten']}}</td>
             </tr>
             <tr>
                 <td width="200px">Provinsi</td>
                 <td>:</td>
-                <td width="395px">{{$data->provinsi}}</td>
+                <td width="395px">{{$data['provinsi']}}</td>
             </tr>
             <tr>
                 <td width="200px">Alasan Pindah</td>
                 <td>:</td>
-                <td width="395px">{{$data->alasan_pindah}}</td>
+                <td width="395px">{{$data['alasan_pindah']}}</td>
             </tr>
               
             </table>
@@ -180,22 +180,22 @@
             </tr>
               <?php $no = 1?>
               
-                @for ($i = 0; $i < count($data->nama); $i++)
+                @for ($i = 0; $i < count($data['nama']); $i++)
                   <tr class="tr" style=border:1px solid #000000;">
                       <td class="td" style="text-align: center;">
                           {{$no}}
                       </td>
                       <td class="td">
-                          {{$data->nama[$i]}}
+                          {{$data['nama'][$i]}}
                       </td>
                       <td class="td" style="text-align: center;">
-                        {{$data->jenis_kelamin[$i]}}
+                        {{$data['jenis_kelamin'][$i]}}
                       </td>
                       <td class="td" style="text-align: center;">
-                        {{$data->umur[$i]}}
+                        {{$data['umur'][$i]}}
                       </td>
                       <td class="td" style="text-align: center;">
-                        {{$data->hubungan_keluarga[$i]}}
+                        {{$data['hubungan_keluarga'][$i]}}
                       </td>
                   </tr>
                   <?php $no++?>

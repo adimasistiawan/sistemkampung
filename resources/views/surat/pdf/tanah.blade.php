@@ -86,7 +86,7 @@
         <hr style="border: 2px solid #000;"><br>
 
         <u><span style=" font-size:19px; font-family: 'CustomFontBold';">SURAT KETERANGAN TANAH</span></u><br>
-        <span >Nomor : 475 / 511 / K.9 / XII / 2020</span><br>
+        {{-- <span >Nomor : 475 / 511 / K.9 / XII / 2020</span><br> --}}
       </div>
       <br>
       <br>
@@ -139,7 +139,7 @@
             
           </table>
         </div>
-        <p>Nama tersebut benar penduduk Kampung Notoharjo Kecamatan Trimurjo Kabupaten Lampung Tengah yang selama ini dalam pengawasan kami, dan benar memiliki sebidang Tanah dengan luas <b>{{$luas_tanah}} m2</b> yang terletak di <b>{{$alamat}}</b></p>
+        <p>Nama tersebut benar penduduk Kampung Notoharjo Kecamatan Trimurjo Kabupaten Lampung Tengah yang selama ini dalam pengawasan kami, dan benar memiliki sebidang Tanah dengan luas <b>{{rupiah($data->luas_tanah)}} m2</b> yang terletak di <b>{{$data->alamat}}</b></p>
         
         <br>
         <p>Demikian surat ini kami buat dengan sebenarnya untuk dapat dipergunakan sebagaimana mestinya</p>

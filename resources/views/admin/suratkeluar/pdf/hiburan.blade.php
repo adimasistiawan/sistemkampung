@@ -59,114 +59,115 @@
 </head>
 <body>
   @if ($watermark)
-  <div style="background-size: cover; background-repeat: no-repeat; background-image: url({{asset('belum.png')}});">
+  <div style="background-size: cover; background-repeat: no-repeat; background-image: url({{asset('belum_diterima.png')}});">
 @else
   <div>
 @endif
       <div style="text-align: center; ">
-        <table>
-          <tr>
-            <td width="150px" align="center">
-              <img src="{{asset('logo.png')}}" alt="" width="80px" height="100px">
-            </td>
-            <td width="300px" align="center" style="font-size: 24px">
-              <span style="font-family: 'CustomFontBold'; font-size: 18px">PEMERINTAH KABUPATEN LAMPUNG TENGAH</span><br>
-              <span style="font-size: 18px">KECAMATAN TRIMURJO</span><br>
-              <span style="font-size: 18px">KAMPUNG NOTOHARJO</span><br>
-              <table>
-                <tr>
-                  <td align="right"> <i> Alamat: Jl. Irisigasi Punggur Utara</i></td>
-                  <td width="150px" align="right"> <i>Kode Pos: 34172</i> </td>
-                </tr>
-              </table>
-            </td>
-          </tr>
-        </table>
         
-        <hr style="border: 2px solid #000;"><br>
 
-        <u><span style=" font-size:19px; font-family: 'CustomFontBold';">SURAT KETERANGAN KURANG MAMPU</span></u><br>
-        {{-- <span >Nomor : 474 / 500 / K.9 / XI / 2020</span><br> --}}
+        <table width="100%" >
+            <tr>
+              <td width="200px" style="text-align: center;">
+              </td>
+              <td width="180px" style="text-align: center;">
+              </td>
+              <td width="220px">
+                <p>Notoharjo, {{date('d M Y',strtotime($tgl))}}</p>
+                Kepada
+                <p>Yth. Bpk Kepala Kampung Notoharjo</p>
+                <p>Di tempat.</p>
+              </td>
+            </tr>
+          </table> 
+        {{-- <span >Nomor : 478 / 506 / K.9 / XII / 2020</span><br> --}}
       </div>
       <br>
-      <br>
-      <div style="padding-right: 30px">
-        <p>Yang bertanda tangan di bawah ini Kepala Kampung Notoharjo Kecamatan Trimurjo Kabupaten Lampung Tengah menerangkan dengan sesungguhnya bahwa:</p>
-      
+      <div style="padding-left: 40px; padding-right: 30px">
+        <p>Dengan hormat,</p>
+        <p>Dengan ini saya memohon untuk diberikan izin keramaian atas nama :</p>
         <div style="padding-left: 30px">
-          <table>
-            
-            <tr>
-              <td width="200px">Nama</td>
-              <td>:</td>
-              <td width="395px">{{Auth::guard('warga')->user()->nama}}.</td>
-            </tr>
-            <tr>
-              <td>Tempat Tgl. Lahir</td>
-              <td>:</td>
-              <td>{{Auth::guard('warga')->user()->tempat_lahir}}, {{date('d-m-Y',strtotime(Auth::guard('warga')->user()->tanggal_lahir))}}</td>
-            </tr>
-            <tr>
-              <td>Bangsa/Agama</td>
-              <td>:</td>
-              <td>Indonesia/{{Auth::guard('warga')->user()->agama}}</td>
-            </tr>
-            <tr>
-              <td>Status</td>
-              <td>:</td>
-              <td>{{Auth::guard('warga')->user()->status_kawin}}</td>
-            </tr>
-            <tr>
-              <td>Pekerjaan</td>
-              <td>:</td>
-              <td>{{Auth::guard('warga')->user()->pekerjaan->nama}}</td>
-            </tr>
-            <tr>
-              <td>NIK</td>
-              <td>:</td>
-              <td>{{Auth::guard('warga')->user()->nik}}</td>
-            </tr>
-            <tr>
-              <td>Alamat</td>
-              <td>:</td>
-              <td>{{Auth::guard('warga')->user()->alamat}}</td>
-            </tr>
-            
-          </table>
+            <table>
+              
+              <tr>
+                <td width="200px">Nama</td>
+                <td>:</td>
+                <td width="395px">{{$warga->nama}}.</td>
+              </tr>
+              <tr>
+                <td>Umur</td>
+                <td>:</td>
+                <td>{{\Carbon\Carbon::parse($warga->tanggal_lahir)->age}} tahun</td>
+              </tr>
+              <tr>
+                <td>Pekerjaan</td>
+                <td>:</td>
+                <td>{{$warga->jenis_kelamin}}</td>
+              </tr>
+              <tr>
+                <td>Agama</td>
+                <td>:</td>
+                <td>{{$warga->agama}}</td>
+              </tr>
+              <tr>
+                <td>Alamat</td>
+                <td>:</td>
+                <td>{{$warga->alamat}}</td>
+              </tr>
+            </table>
+          </div>
+          <br>
+          <p>Adapun Izin Keramaian tersebut untuk kegiatan Acara <b>{{$data['nama_acara']}}</b> pada :</p>
+          <div style="padding-left: 30px">
+            <table>
+              
+              <tr>
+                <td width="200px">Hari/Tanggal</td>
+                <td>:</td>
+                <td width="395px">{{$data['hari']}}/{{date('d M Y',strtotime($data['tanggal']))}}.</td>
+              </tr>
+              <tr>
+                <td>Pukul</td>
+                <td>:</td>
+                <td>{{$data['dari']}} s/d {{$data['sampai']}}</td>
+              </tr>
+              <tr>
+                <td>Tempat</td>
+                <td>:</td>
+                <td>{{$data['tempat']}}</td>
+              </tr>
+
+              <tr>
+                <td>Alamat</td>
+                <td>:</td>
+                <td>{{$data['alamat']}}</td>
+              </tr>
+              <tr>
+                <td>Hiburan</td>
+                <td>:</td>
+                <td>{{$data['hiburan']}}</td>
+              </tr>
+            </table>
         </div>
-        <p>Keterangan:</p>
-        <ol>
-          <li>Nama tsb. benar penduduk Kampung Notoharjo Kec. Trimurjo Kab. Lampung Tengah yang selama ini dalam pengawasan kami</li>
-          <li>Menurut sepengetahuan kami orang tersebut termasuk keluarga kurang mampu</li>
-          <li>Surat keterangan ini diberikan yang bersangkutan digunakan untuk <b>{{$data->untuk}}</b></li>
-        </ol>
-        <br>
-        <p>Demikian surat ini kami buat dengan sebenarnya untuk dapat dipergunakan sebagaimana mestinya</p>
+        <p>Demikian permohonan ini atas terkabulnya saya ucapkan banyak terima kasih</p>
       </div>
-      
-      <br>
-      
       <br>
       <br>
       <br>
-      <br>
-      <br>
-      
       <table width="100%" >
         <tr>
-          <td width="200px">
-            &nbsp;
+          <td width="200px" style="text-align: center;">
+            
           </td>
-          <td width="200px">
-            &nbsp;
+          <td width="200px" style="text-align: center;">
+            
           </td>
-          <td width="300px" style="text-align: center;">
-            <p>Notoharjo, {{date('d M Y',strtotime($tgl))}}</p>
-            <p>Kepala Kampung Notoharjo</p>
+          <td width="200px" style="text-align: center;">
+            <p>PEMOHON</p>
             <br>
             <br>
             <br>
-            <u>{{$dataprofil['nama_ketua_kampung']}}</u>
+            <u>{{$warga->nama}}</u>
           </td>
         </tr>
       </table>  

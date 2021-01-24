@@ -75,7 +75,8 @@
               <td width="220px">
                 <p>Notoharjo, {{date('d M Y',strtotime($tgl))}}</p>
                 Kepada
-                <p>Yth. Bpk Kepala Kampung Notoharjo</p>
+                <br>
+                Yth. Bpk Kepala Kampung Notoharjo
                 <p>Di tempat.</p>
               </td>
             </tr>
@@ -151,6 +152,9 @@
         </div>
         <p>Demikian permohonan ini atas terkabulnya saya ucapkan banyak terima kasih</p>
       </div>
+      <br>
+      <br>
+      <br>
       <table width="100%" >
         <tr>
           <td width="200px" style="text-align: center;">
