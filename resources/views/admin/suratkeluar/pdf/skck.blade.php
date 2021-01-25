@@ -92,7 +92,11 @@
                     <tr>
                         <td>Nomor</td>
                         <td>:</td>
-                        <td></td>
+                        <td>
+                          @if(!$watermark)
+                          <span>{{$nomor}}</span>
+                          @endif
+                        </td>
                     </tr>
                     <tr>
                         <td>Lamp</td>

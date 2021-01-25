@@ -106,6 +106,7 @@
             <li><a href="{{route('profil.index')}}"><i class="fa fa-circle-o"></i>Profil</a></li>
             <li><a href="{{route('web.index')}}"><i class="fa fa-circle-o"></i>Web</a></li>
             <li><a href="{{route('pekerjaan.index')}}"><i class="fa fa-circle-o"></i>Pekerjaan</a></li>
+            <li><a href="{{route('kodesurat.index')}}"><i class="fa fa-circle-o"></i>Kode Surat</a></li>
             <li><a href="{{route('ubahakun.index')}}"><i class="fa fa-circle-o"></i>Ubah Akun</a></li>
           </ul>
         </li>

@@ -38,10 +38,10 @@ class PekerjaanController extends Controller
         $check = Pekerjaan::where('nama', $request->nama)->where('is_delete','!=',1)->get();
         $check2 = Pekerjaan::where('warna', $request->warna)->where('is_delete','!=',1)->get();
         if(count($check) > 0){
-            return redirect()->route('pekerjaan.index')->with('error', 'Gagal. Nama sudah pernah digunakan ');
+            return redirect()->back()->with('error', 'Gagal. Nama sudah pernah digunakan ');
         }
         if(count($check2) > 0){
-            return redirect()->route('pekerjaan.index')->with('error', 'Gagal. Warna sudah pernah digunakan ');
+            return redirect()->back()->with('error', 'Gagal. Warna sudah pernah digunakan ');
         }
         Pekerjaan::create([
             'nama' => $request->nama,
@@ -49,7 +49,7 @@ class PekerjaanController extends Controller
             'is_delete' => 0
         ]);
 
-        return redirect()->route('pekerjaan.index')->with('success', 'Success');
+        return redirect()->back()->with('success', 'Success');
     }
 
     /**
@@ -97,7 +97,7 @@ class PekerjaanController extends Controller
             'warna' => $request->warna,
         ]);
 
-        return redirect()->route('pekerjaan.index')->with('success', 'Success');
+        return redirect()->back()->with('success', 'Success');
     }
 
     /**
@@ -113,6 +113,6 @@ class PekerjaanController extends Controller
             'is_delete' => 1,
         ]);
 
-        return redirect()->route('pekerjaan.index')->with('success', 'Success');
+        return redirect()->back()->with('success', 'Success');
     }
 }

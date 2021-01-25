@@ -34,10 +34,10 @@ class AdminController extends Controller
         $check = User::where('email', $request->email)->where('email','!=',$admin->email)->get();
         $check2 = User::where('nama', $request->nama)->where('nama','!=',$admin->nama)->get();
         if(count($check) > 0){
-            return redirect()->route('admin.index')->with('error', 'Gagal. Email sudah pernah terdaftar ');;
+            return redirect()->back()->with('error', 'Gagal. Email sudah pernah terdaftar ');;
         }
         if(count($check2) > 0){
-            return redirect()->route('admin.index')->with('error', 'Gagal. Nama sudah pernah terdaftar ');;
+            return redirect()->back()->with('error', 'Gagal. Nama sudah pernah terdaftar ');;
         }
         if($request->password == null){
             User::find(Auth::guard('admin')->user()->id)->update([
@@ -77,10 +77,10 @@ class AdminController extends Controller
         $check = User::where('email', $request->email)->get();
         $check2 = User::where('nama', $request->nama)->get();
         if(count($check) > 0){
-            return redirect()->route('admin.index')->with('error', 'Gagal. Email sudah pernah terdaftar ');;
+            return redirect()->back()->with('error', 'Gagal. Email sudah pernah terdaftar ');;
         }
         if(count($check2) > 0){
-            return redirect()->route('admin.index')->with('error', 'Gagal. Nama sudah pernah terdaftar ');;
+            return redirect()->back()->with('error', 'Gagal. Nama sudah pernah terdaftar ');;
         }
         
         User::create([
@@ -91,7 +91,7 @@ class AdminController extends Controller
         ]);
         
 
-        return redirect()->route('admin.index')->with('success', 'Success');
+        return redirect()->back()->with('success', 'Success');
     }
 
     /**
@@ -129,10 +129,10 @@ class AdminController extends Controller
         $check = User::where('email', $request->email)->where('email','!=',$admin->email)->get();
         $check2 = User::where('nama', $request->nama)->where('nama','!=',$admin->nama)->get();
         if(count($check) > 0){
-            return redirect()->route('admin.index')->with('error', 'Gagal. Email sudah pernah terdaftar ');;
+            return redirect()->back()->with('error', 'Gagal. Email sudah pernah terdaftar ');;
         }
         if(count($check2) > 0){
-            return redirect()->route('admin.index')->with('error', 'Gagal. Nama sudah pernah terdaftar ');;
+            return redirect()->back()->with('error', 'Gagal. Nama sudah pernah terdaftar ');;
         }
         if($request->password == null){
             User::find($id)->update([
@@ -148,12 +148,12 @@ class AdminController extends Controller
         }
         
 
-        return redirect()->route('admin.index')->with('success', 'Success');
+        return redirect()->back()->with('success', 'Success');
     }
 
     public function destroy($id)
     {
         User::find($id)->delete();
-        return redirect()->route('admin.index')->with('success', 'Success');
+        return redirect()->back()->with('success', 'Success');
     }
 }

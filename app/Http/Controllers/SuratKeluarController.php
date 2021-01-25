@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\SuratKeluar;
+use App\KodeSurat;
 use App\Pengaturan;
 use App\Warga;
 use Carbon\Carbon;
@@ -17,8 +18,8 @@ class SuratKeluarController extends Controller
      */
     public function index()
     {
-        $telahditerima = SuratKeluar::where('status','Telah Diterima')->orderBy('created_at','desc')->get();
-        $belumditerima = SuratKeluar::where('status','Belum Diterima')->orderBy('created_at','desc')->get();
+        $telahditerima = SuratKeluar::where('status','Telah Diterima')->orderBy('updated_at','desc')->get();
+        $belumditerima = SuratKeluar::where('status','Belum Diterima')->orderBy('updated_at','desc')->get();
         return view('admin.suratkeluar.index',compact('telahditerima','belumditerima'));
     }
 
@@ -33,67 +34,67 @@ class SuratKeluarController extends Controller
         $profil = Pengaturan::all();
         $dataprofil = json_decode($profil[0]->profil, true);
         $warga = Warga::where('id',$surat->warga_id)->with('pekerjaan')->first();
-        
+        $nomor = $surat->nomor_surat;
         if($perihal == "Surat Keterangan Kurang Mampu"){
-            $pdf = PDF::loadView('admin.suratkeluar.pdf.kurangmampu',compact('warga','tgl','data','dataprofil','watermark'));
+            $pdf = PDF::loadView('admin.suratkeluar.pdf.kurangmampu',compact('warga','tgl','data','dataprofil','watermark','nomor'));
             return $pdf->stream();
         }
         else if($perihal == "Surat Keterangan Usaha"){
-            $pdf = PDF::loadView('admin.suratkeluar.pdf.usaha',compact('warga','tgl','data','dataprofil','watermark'));
+            $pdf = PDF::loadView('admin.suratkeluar.pdf.usaha',compact('warga','tgl','data','dataprofil','watermark','nomor'));
             return $pdf->stream();
         }
         else if($perihal == "Surat Keterangan Tanah"){
-            $pdf = PDF::loadView('admin.suratkeluar.pdf.tanah',compact('warga','tgl','data','dataprofil','watermark'));
+            $pdf = PDF::loadView('admin.suratkeluar.pdf.tanah',compact('warga','tgl','data','dataprofil','watermark','nomor'));
             return $pdf->stream();
         }
         else if($perihal == "Surat Keterangan Ahli Waris"){
-            $pdf = PDF::loadView('admin.suratkeluar.pdf.ahliwaris',compact('warga','tgl','data','dataprofil','watermark'));
+            $pdf = PDF::loadView('admin.suratkeluar.pdf.ahliwaris',compact('warga','tgl','data','dataprofil','watermark','nomor'));
             return $pdf->stream();
         }
         else if($perihal == "Surat Keterangan Kematian"){
-            $pdf = PDF::loadView('admin.suratkeluar.pdf.kematian',compact('warga','tgl','data','dataprofil','watermark'));
+            $pdf = PDF::loadView('admin.suratkeluar.pdf.kematian',compact('warga','tgl','data','dataprofil','watermark','nomor'));
             return $pdf->stream();
         }
         else if($perihal == "Surat Keterangan Kuasa"){
-            $pdf = PDF::loadView('admin.suratkeluar.pdf.kuasa',compact('warga','tgl','data','dataprofil','watermark'));
+            $pdf = PDF::loadView('admin.suratkeluar.pdf.kuasa',compact('warga','tgl','data','dataprofil','watermark','nomor'));
             return $pdf->stream();
         }
         else if($perihal == "Surat Keterangan Jual Beli"){
-            $pdf = PDF::loadView('admin.suratkeluar.pdf.jualbeli',compact('warga','tgl','data','dataprofil','watermark'));
+            $pdf = PDF::loadView('admin.suratkeluar.pdf.jualbeli',compact('warga','tgl','data','dataprofil','watermark','nomor'));
             return $pdf->stream();
         }
 
         else if($perihal == "Surat Pernyataan Hiburan"){
-            $pdf = PDF::loadView('admin.suratkeluar.pdf.hiburan',compact('warga','tgl','data','dataprofil','watermark'));
+            $pdf = PDF::loadView('admin.suratkeluar.pdf.hiburan',compact('warga','tgl','data','dataprofil','watermark','nomor'));
             return $pdf->stream();
         }
 
         else if($perihal == "Surat Keterangan Mengurus Orang Tua"){
-            $pdf = PDF::loadView('admin.suratkeluar.pdf.orangtua',compact('warga','tgl','dataprofil','watermark'));
+            $pdf = PDF::loadView('admin.suratkeluar.pdf.orangtua',compact('warga','tgl','dataprofil','watermark','nomor'));
             return $pdf->stream();
         }
 
         else if($perihal == "Surat Keterangan Kehilangan"){
-            $pdf = PDF::loadView('admin.suratkeluar.pdf.kehilangan',compact('warga','tgl','data','dataprofil','watermark'));
+            $pdf = PDF::loadView('admin.suratkeluar.pdf.kehilangan',compact('warga','tgl','data','dataprofil','watermark','nomor'));
             return $pdf->stream();
         }
 
         else if($perihal == "Surat Keterangan Pindah"){
-            $pdf = PDF::loadView('admin.suratkeluar.pdf.pindah',compact('warga','tgl','data','dataprofil','watermark'));
+            $pdf = PDF::loadView('admin.suratkeluar.pdf.pindah',compact('warga','tgl','data','dataprofil','watermark','nomor'));
             return $pdf->stream();
         }
 
         else if($perihal == "Surat Keterangan Jalan"){
-            $pdf = PDF::loadView('admin.suratkeluar.pdf.jalan',compact('warga','tgl','data','dataprofil','watermark'));
+            $pdf = PDF::loadView('admin.suratkeluar.pdf.jalan',compact('warga','tgl','data','dataprofil','watermark','nomor'));
             return $pdf->stream();
         }
 
         else if($perihal == "Surat Rekomendasi Nikah"){
-            $pdf = PDF::loadView('admin.suratkeluar.pdf.nikah',compact('warga','tgl','data','dataprofil','watermark'));
+            $pdf = PDF::loadView('admin.suratkeluar.pdf.nikah',compact('warga','tgl','data','dataprofil','watermark','nomor'));
             return $pdf->stream();
         }
         else if($perihal == "Surat Permohonan SKCK"){
-            $pdf = PDF::loadView('admin.suratkeluar.pdf.skck',compact('warga','tgl','data','dataprofil','watermark'));
+            $pdf = PDF::loadView('admin.suratkeluar.pdf.skck',compact('warga','tgl','data','dataprofil','watermark','nomor'));
             return $pdf->stream();
         }
     }
@@ -106,10 +107,28 @@ class SuratKeluarController extends Controller
                 'keterangan' => $request->keterangan
             ]);
         }else{
+            $kodesurat = KodeSurat::where('nama',$surat->perihal)->first();
+            $kode = $kodesurat->kode;
+            $bulan = month(Carbon::now()->month);
+            $tahun = Carbon::now()->year;
+            $check = SuratKeluar::where('urutan','!=',null)->whereMonth('tanggal',Carbon::now()->month)->orderBy('urutan','desc');
+            
+            if(count($check->get()) == 0){
+                $urutan = 1;
+                $nomorsurat = $kode." / "."001"." / "."K.9"." / ".$bulan." / ".$tahun;
+            }
+            else{
+                $sk = $check->first();
+                $urutan = $sk->urutan+1;
+                $u = str_pad(($sk->urutan+1), 3, '0', STR_PAD_LEFT);
+                $nomorsurat = $kode." / ".$u." / "."K.9"." / ".$bulan." / ".$tahun;
+            }
+            
             $surat->update([
+                'nomor_surat' => $nomorsurat,
+                'urutan' => $urutan,
                 'status' => "Telah Diterima",
                 'keterangan' => $request->keterangan,
-                'penanggung_jawab' => $request->penanggung_jawab,
             ]);
         }
         return 1;

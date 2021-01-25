@@ -82,7 +82,11 @@
                                   <span class="badge badge-success">Telah Diterima</span>
                               @endif
                             </td>
-                            <td>{{$value->keterangan}}</td>
+                            <td>
+                              @if ($value->status != "Telah Diterima")
+                              {{$value->keterangan}}
+                              @endif
+                            </td>
                           </tr>
                           @php
                               $no++;

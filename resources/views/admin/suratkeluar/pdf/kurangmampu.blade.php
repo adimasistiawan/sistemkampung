@@ -87,6 +87,9 @@
 
         <u><span style=" font-size:19px; font-family: 'CustomFontBold';">SURAT KETERANGAN KURANG MAMPU</span></u><br>
         {{-- <span >Nomor : 474 / 500 / K.9 / XI / 2020</span><br> --}}
+        @if(!$watermark)
+        <span>Nomor : {{$nomor}}</span>
+        @endif
       </div>
       <br>
       <br>

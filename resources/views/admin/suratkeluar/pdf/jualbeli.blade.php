@@ -68,6 +68,9 @@
 
         <u><span style=" font-size:19px; font-family: 'CustomFontBold';">SURAT KETERANGAN JUAL BELI</span></u><br>
         {{-- <span >Nomor : 478 / 506 / K.9 / XII / 2020</span><br> --}}
+        @if(!$watermark)
+        <span>Nomor : {{$nomor}}</span>
+        @endif
       </div>
       <br>
       <div style="padding-right: 30px">

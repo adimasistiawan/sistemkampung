@@ -143,6 +143,68 @@ $(document).ready(function(){
             })
             
           })
+
+          $('.btn-approve').click(function(){
+            $.confirm({
+              theme: 'material',
+              title: 'Isi Keterangan',
+              content: '' +
+                                            '<form action="" class="formName">' +
+                                            '<div class="form-group">' +
+                                            '<input class="form-control alasan" placeholder="Masukan Keterangan">' +
+                                            '</div>' +
+                                            '</form>',
+              buttons: {
+                Yes: {
+                  text:'Submit',
+                  btnClass: 'btn-primary',
+                  action: function(){
+                  var checkrequired = $('input').filter('[required]:visible')
+                  var isValid = true;
+                  $(checkrequired).each( function() {
+                          if ($(this).parsley().validate() !== true) isValid = false;
+                  });
+                  if(!isValid){
+                    $.alert('Mohon masukan catatan');
+                    return false;
+                  }
+                  else{
+                    urlsnya = '{{route('suratkeluar.verifikasi',$data->id)}}';
+                    var catatan = this.$content.find('.alasan').val();
+                    _token = $('input[name=_token]').val();
+                    $.ajax({
+                      type: 'GET',
+                      dataType: 'json',
+                      data: {_token:_token, kode:0,keterangan:catatan},
+                      url: urlsnya,
+                    })
+                    .done(function(response) {
+                      if(response == 1){
+                        toastr.success("Success")
+                        url = "{{ route('suratkeluar.index')}}";
+                        window.location.replace(url);
+                      }
+                      
+                    })
+                    .fail(function(){
+                      $.alert("error");
+                      return;
+                    })
+                    .always(function() {
+                        console.log("complete");
+                    });
+                   }
+                  }
+                  
+                },
+                
+                No: function () {
+                  return;
+                }
+              }
+            })
+            
+          })
  })
 </script>
 @endsection

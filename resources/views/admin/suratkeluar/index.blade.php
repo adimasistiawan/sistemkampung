@@ -59,7 +59,6 @@
                               <th class="text-center">Tanggal</th>
                               <th>Nomor Surat</th>
                               <th>Perihal</th>
-                              <th>Penanggung Jawab</th>
                               <th>Keterangan</th>
                               <th class="text-center">Aksi</th>
                           </tr>
@@ -72,13 +71,12 @@
                           <tr>
                               <td>{{$no}}</td>
                               <td>{{$item->warga->nama}}</td>
-                              <td>{{$item->nomor_surat}}</td>
                               <td>{{date('d-m-Y',strtotime($item->tanggal))}}</td>
+                              <td>{{$item->nomor_surat}}</td>
                               <td>{{$item->perihal}}</td>
-                              <td>{{$item->penanggung_jawab}}</td>
                               <td>{{$item->keterangan}}</td>
                               <td>
-                                  <a href="" class="btn btn-success"><i class="fa fa-download"></i> PDF</a>
+                                  <a href="{{route('suratkeluar.pdf',['perihal'=>$item->perihal,'id'=>$item->id,'watermark'=>0])}}" target="blank" class="btn btn-success"><i class="fa fa-download"></i> PDF</a>
                               </td>
                           </tr>
                           @php

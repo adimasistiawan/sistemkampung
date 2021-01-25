@@ -87,6 +87,9 @@
 
         <u><span style=" font-size:19px; font-family: 'CustomFontBold';">SURAT KETERANGAN JALAN</span></u><br>
         {{-- <span >Nomor : 478 / 506 / K.9 / XII / 2020</span><br> --}}
+        @if(!$watermark)
+        <span>Nomor : {{$nomor}}</span>
+        @endif
       </div>
       <br>
       <br>

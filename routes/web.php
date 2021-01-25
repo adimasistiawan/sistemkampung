@@ -84,6 +84,7 @@ Route::group(['middleware' => 'admin'], function () {
     Route::get('/admin/ubahakun', 'AdminController@ubahakun')->name('ubahakun.index');
     Route::post('/admin/ubahakun/update/', 'AdminController@ubahakun_update')->name('ubahakun.update');
     Route::get('/admin/warga/verifikasi/{id}','WargaController@verifikasi')->name('warga.verifikasi');
+    Route::resource('/admin/kodesurat', 'KodeSuratController');
 
     Route::get('logout', 'AuthAdminController@logout')->name('logout');
     

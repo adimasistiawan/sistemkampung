@@ -64,8 +64,6 @@
   <div>
 @endif
       <div style="text-align: center; ">
-        
-
         <table width="100%" >
             <tr>
               <td width="200px" style="text-align: center;">

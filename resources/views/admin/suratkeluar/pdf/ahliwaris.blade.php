@@ -87,6 +87,9 @@
 
         <u><span style=" font-size:19px; font-family: 'CustomFontBold';">SURAT KETERANGAN AHLI WARIS</span></u><br>
         {{-- <span >Nomor : 474 / 501 / K.9 / III / 2020</span><br> --}}
+        @if(!$watermark)
+        <span>Nomor : {{$nomor}}</span>
+        @endif
       </div>
       <br>
       <br>
