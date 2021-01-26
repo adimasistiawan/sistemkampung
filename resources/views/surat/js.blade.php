@@ -565,6 +565,139 @@
         </div>
           `)
         }
+
+        else if($(this).val() == "Surat Pengantar Perkawinan"){
+          $('.input-tambahan').empty();
+          $('.input-tambahan').append(`
+          <div class="col-md-8">
+          <b>Data Ayah :</b>
+          <br>
+          <br>
+          <div class="form-group">
+              <label  >Nama Lengkap</label>
+              <input type="text" class="form-control" required name="nama">
+          </div>
+          <div class="form-group">
+              <label  >NIK</label>
+              <input type="text" maxlength="16" onkeypress="return validate(event)" class="form-control" required name="nik">
+          </div>
+          <div class="form-group">
+              <label  >Alamat</label>
+              <input type="text" class="form-control" required name="alamat">
+          </div>
+          <div class="form-group">
+                          <label  >Tanggal Lahir</label>
+                          <input type="date" class="form-control" required name="tanggal_lahir">
+            </div>
+          <div class="form-group">
+              <label  >Tempat Lahir</label>
+              <input type="text" class="form-control" required name="tempat_lahir">
+          </div>
+          
+          
+          <div class="form-group">
+              <label  >Pilih Pekerjaan</label>
+              <br>
+              <select name="pekerjaan" class="" required>
+                  <option value="">--Pilih Pekerjaan--</option>
+                  @foreach ($pekerjaan as $item)
+                  <option value="{{$item->nama}}">{{$item->nama}}</option>
+                  @endforeach
+                  
+              </select>
+          </div>
+          <div class="form-group">
+              <label  >Agama</label>
+              <br>
+              <select name="agama" class="" required>
+                  <option value="">--Pilih Agama--</option>
+                  <option value="Islam">Islam</option>
+                  <option value="Kristen">Kristen</option>
+                  <option value="Katolik">Katolik</option>
+                  <option value="Hindu">Hindu</option>
+                  <option value="Budha">Budha</option>
+                  <option value="Konghucu">Konghucu</option>
+                  
+              </select>
+          </div>
+          <br>
+          <hr>
+          <b>Data Ibu :</b>
+          <br>
+          <br>
+          <div class="form-group">
+              <label  >Nama Lengkap</label>
+              <input type="text" class="form-control" required name="nama2">
+          </div>
+          <div class="form-group">
+              <label  >NIK</label>
+              <input type="text" maxlength="16" onkeypress="return validate(event)" class="form-control" required name="nik2">
+          </div>
+          <div class="form-group">
+              <label  >Alamat</label>
+              <input type="text" class="form-control" required name="alamat2">
+          </div>
+          <div class="form-group">
+                          <label  >Tanggal Lahir</label>
+                          <input type="date" class="form-control" required name="tanggal_lahir2">
+            </div>
+          <div class="form-group">
+              <label  >Tempat Lahir</label>
+              <input type="text" class="form-control" required name="tempat_lahir2">
+          </div>
+          
+          
+          <div class="form-group">
+              <label  >Pilih Pekerjaan</label>
+              <br>
+              <select name="pekerjaan2" class="" required>
+                  <option value="">--Pilih Pekerjaan--</option>
+                  @foreach ($pekerjaan as $item)
+                  <option value="{{$item->nama}}">{{$item->nama}}</option>
+                  @endforeach
+                  
+              </select>
+          </div>
+          <div class="form-group">
+              <label  >Agama</label>
+              <br>
+              <select name="agama2" class="" required>
+                  <option value="">--Pilih Agama--</option>
+                  <option value="Islam">Islam</option>
+                  <option value="Kristen">Kristen</option>
+                  <option value="Katolik">Katolik</option>
+                  <option value="Hindu">Hindu</option>
+                  <option value="Budha">Budha</option>
+                  <option value="Konghucu">Konghucu</option>
+                  
+              </select>
+          </div>
+          <br>
+          <hr>
+          <b>Status Perkawinan :</b>
+          <br>
+          <br>
+          <div class="form-group">
+              <label  >Laki-laki</label>
+              <br>
+              <select name="laki" class="" required>
+                  <option value="Jejaka">Jejaka</option>
+                  <option value="Duda">Duda</option>
+                  
+              </select>
+          </div>
+          <div class="form-group">
+              <label  >Perempuan</label>
+              <br>
+              <select name="perempuan" class="" required>
+                  <option value="Perawan">Perawan</option>
+                  <option value="Janda">Janda</option>
+                  
+              </select>
+          </div>
+            </div>
+          `)
+        }
       })
 
       $(document).on('click','.tambah-saksi',function(){

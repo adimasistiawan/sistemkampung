@@ -95,6 +95,11 @@ class SuratController extends Controller
                 $pdf = PDF::loadView('surat.pdf.skck',compact('tgl','data','dataprofil','watermark'));
                 return $pdf->stream();
             }
+
+            else if($request->surat == "Surat Pengantar Perkawinan"){
+                $pdf = PDF::loadView('surat.pdf.perkawinan',compact('tgl','data','dataprofil','watermark'));
+                return $pdf->stream();
+            }
         }
         
         /// ---- ajukan

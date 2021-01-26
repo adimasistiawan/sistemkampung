@@ -65,6 +65,8 @@
         <li><a href="{{route('dashboard')}}"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
         <li><a href="{{route('penduduk.index')}}"><i class="fa fa-users"></i> <span>Penduduk</span></a></li>
         <li><a href="{{route('berita.index')}}"><i class="fa fa-newspaper-o"></i> <span>Berita</span></a></li>
+        <li><a href="{{route('formulir.index')}}"><i class="fa fa-edit"></i> <span>Formulir</span></a></li>
+        <li><a href="{{route('suratmasuk.index')}}"><i class="fa fa-file"></i> <span>Surat Masuk</span></a></li>
         @php
             $suratkeluar = App\SuratKeluar::where('status','Belum Diterima')->count();
         @endphp

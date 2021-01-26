@@ -97,6 +97,16 @@ class SuratKeluarController extends Controller
             $pdf = PDF::loadView('admin.suratkeluar.pdf.skck',compact('warga','tgl','data','dataprofil','watermark','nomor'));
             return $pdf->stream();
         }
+
+        else if($perihal == "Surat Pengantar Perkawinan"){
+            $pdf = PDF::loadView('admin.suratkeluar.pdf.perkawinan',compact('warga','tgl','data','dataprofil','watermark','nomor'));
+            return $pdf->stream();
+        }
+
+        else if($perihal == "Surat Keterangan Kematian Suami/Istri"){
+            $pdf = PDF::loadView('admin.suratkeluar.pdf.kemsuamiistri',compact('warga','tgl','data','dataprofil','watermark','nomor'));
+            return $pdf->stream();
+        }
     }
 
     public function verifikasi(Request $request,$id){

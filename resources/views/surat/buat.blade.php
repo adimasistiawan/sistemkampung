@@ -98,6 +98,8 @@ div.horizontal-fields label {
                                 <option value="Surat Pernyataan Hiburan">Surat Pernyataan Hiburan</option>
                                 <option value="Surat Rekomendasi Nikah">Surat Rekomendasi Nikah</option>
                                 <option value="Surat Permohonan SKCK">Surat Permohonan SKCK</option>
+                                <option value="Surat Pengantar Perkawinan">Surat Pengantar Perkawinan</option>
+                                <option value="Surat Keterangan Kematian Suami/Istri">Surat Keterangan Kematian Suami/Istri</option>
                                 <option value="Surat Keterangan Mengurus Orang Tua">Surat Keterangan Mengurus Orang Tua</option>
                                 <option value="Surat Keterangan Kehilangan">Surat Keterangan Kehilangan</option>
                                 <option value="Surat Keterangan Jalan">Surat Keterangan Jalan</option>
