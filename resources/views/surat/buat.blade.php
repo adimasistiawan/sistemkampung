@@ -62,6 +62,7 @@ div.horizontal-fields label {
               <ul class="vertical-menu">
                 <li><a href="{{route('profil.warga')}}">Data Akun</a></li>
                 <li><a href="{{route('surat')}}">Surat</a></li>
+                <li><a href="{{route('formulir')}}">Formulir</a></li>
                 <li><a href="{{route('gantipassword.warga')}}">Ganti Password</a></li>
               </ul>
             </div>

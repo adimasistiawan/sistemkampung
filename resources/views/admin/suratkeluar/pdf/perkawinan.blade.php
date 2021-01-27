@@ -121,7 +121,7 @@
           </table>
           <br>
       <div style="text-align: center; ">
-          <u><span style=" font-size:14px; font-family: 'CustomFontBold';">SURAT PENGANTAR PERKAWINAN</span></u><br>
+          <u><span style=" font-size:14px;">SURAT PENGANTAR PERKAWINAN</span></u><br>
           {{-- <span >Nomor : 474 / 391 / K.9 / X / 2015</span><br> --}}
           @if(!$watermark)
           <span>Nomor : {{$nomor}}</span>

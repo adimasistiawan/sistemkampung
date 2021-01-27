@@ -4,8 +4,8 @@
 @endsection
 @section('css')
     <style>
-      .link{
-        
+      .img-fluid{
+        height: 300px !important;
       }
     </style>
 @endsection
@@ -27,21 +27,36 @@
             
             <div class="row">
               <div class="col-sm-12 grid-margin">
+                
                 <h2 class="mb-2 font-weight-600">
                     {{$berita->judul}}
                 </h2>
-                
                 <br>
-                <img
+                <div class="row">
+                  
+                  <div class="col-md-5">
+                    <img
                       src="{{asset('image_berita/'.$berita->foto)}}"
                       alt="thumb"
-                      height="300px" width="500px"
-                />
+                      height="300px" width="400px"
+                      class="img-fluid" 
+                    />
+                  </div>
+                  <div class="col-md-6">
+                    @if($berita->video != null)
+                    <video controls class="video img-fluid"  width="400px" height="300px" src="{{asset('video_berita/'.$berita->video)}}">
+                    </video>
+                    @endif
+                  </div>
+                </div>
+                
+                
                 <br>
                 <br>
                 {{date('d-m-Y',strtotime($berita->tanggal))}}, Ditulis oleh <b>{{$berita->dibuat_oleh}}</b>
                 <br>
                 <br>
+                
                 {!! $berita->isi !!}
                 <br>
                 <br>

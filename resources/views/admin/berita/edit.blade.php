@@ -41,6 +41,20 @@
                       <input type='file' id="imgInp" accept="image/*" name="foto" />
                     </div>
                     <div class="form-group">
+                      <label  >Video (Opsional)</label>
+                      @if($berita->video != null)
+                      <video controls class="video" width="300px" height="200px" src="{{asset('video_berita/'.$berita->video)}}">
+                      </video>
+                      <a href="{{route('berita.deletevideo',$berita->id)}}" class="text-red">Hapus</a>
+                      <br>
+                      <br>
+                      @else
+                      <video controls class="video" width="300px" height="200px" hidden>
+                      </video>
+                      @endif
+                      <input type='file' id="video_p"  accept="video/*" name="video" />
+                    </div>
+                    <div class="form-group">
                       <label  >Judul</label>
                       <input type="text" class="form-control input" id="judul"  placeholder="Judul" required value="{{$berita->judul}}"  name="judul">
                     </div>
@@ -86,7 +100,12 @@ function readURL(input) {
     reader.readAsDataURL(input.files[0]); // convert to base64 string
   }
 }
-
+$ ("#video_p").change(function () {
+   var fileInput = document.getElementById('video_p');
+   var fileUrl = window.URL.createObjectURL(fileInput.files[0]);
+   $(".video").removeAttr('hidden');
+   $(".video").attr("src", fileUrl);
+});
 $("#imgInp").change(function() {
   $('#blah').removeAttr('hidden')
   readURL(this);

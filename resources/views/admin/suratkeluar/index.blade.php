@@ -55,7 +55,7 @@
                       <thead>
                           <tr>
                               <th width="15px">No</th>
-                              <th >Warga</th>
+                              <th >Pemohon</th>
                               <th class="text-center">Tanggal</th>
                               <th>Nomor Surat</th>
                               <th>Perihal</th>
@@ -70,13 +70,19 @@
                           @foreach ($telahditerima as $item)
                           <tr>
                               <td>{{$no}}</td>
-                              <td>{{$item->warga->nama}}</td>
+                              <td>{{$item->warga_id == null? $item->pemohon:$item->warga->nama}}</td>
                               <td>{{date('d-m-Y',strtotime($item->tanggal))}}</td>
                               <td>{{$item->nomor_surat}}</td>
                               <td>{{$item->perihal}}</td>
                               <td>{{$item->keterangan}}</td>
                               <td>
-                                  <a href="{{route('suratkeluar.pdf',['perihal'=>$item->perihal,'id'=>$item->id,'watermark'=>0])}}" target="blank" class="btn btn-success"><i class="fa fa-download"></i> PDF</a>
+                                @if($item->warga_id == null)
+                                  <div class="btn btn-warning edit" data-id="{{$item->id}}"  data-toggle="modal">Ubah</div>
+                                </form>
+                                @else
+                                <a href="{{route('suratkeluar.pdf',['perihal'=>$item->perihal == "Surat Keterangan Kematian Suami/Istri"? "Surat Keterangan Kematian SuamiIstri":$item->perihal,'id'=>$item->id,'watermark'=>0])}}" target="blank" class="btn btn-success"><i class="fa fa-download"></i> PDF</a>
+                                @endif
+                                  
                               </td>
                           </tr>
                           @php
@@ -93,7 +99,7 @@
                         <thead>
                             <tr>
                                 <th width="15px">No</th>
-                                <th class="text-center">Warga</th>
+                                <th class="text-center">Pemohon</th>
                                 <th>Tanggal</th>
                                 <th>Perihal</th>
                                 <th class="text-center">Aksi</th>
@@ -106,8 +112,8 @@
                             @foreach ($belumditerima as $item)
                             <tr>
                                 <td>{{$no}}</td>
-                                <td>{{$item->warga->nama}}</td>
-                                <td>{{date('d-m-Y',strtotime($item->tanggal))}}</td>
+                                <td>{{$item->warga_id == null? $item->pemohon:$item->warga->nama}}</td>
+                                <td>{{date('d-m-Y',strtotime($item->created_at))}}</td>
                                 <td>{{$item->perihal}}</td>
                                 <td>
                                     <a href="{{route('suratkeluar.show',$item->id)}}" class="btn btn-warning"><i class="fa fa-search"></i></a>
@@ -148,7 +154,7 @@
             <h4 class="modal-title">Tambah Surat Keluar</h4>
         </div>
         <div class="modal-body">
-            <form method="post" action="{{route('pekerjaan.store')}}">
+            <form method="post" action="{{route('suratkeluar.store')}}">
                 @csrf
                 <div class="form-group">
                   <label>Perihal</label>
@@ -175,27 +181,17 @@
                     <option value="Lainnya">Lainnya</option>
                 </select>
               </div>
-              <div class="input-tambahan" hidden>
-                <div class="form-group">
-                  <label>Nama Surat</label>
-                  <input type="text" class="form-control" placeholder="Nama Surat" name="nama_surat" required>
-                </div>
-                <div class="form-group">
-                  <label>Kode Surat</label>
-                  <input type="text" class="form-control" placeholder="Kode Surat" name="kode_surat" required>
-                </div>
+              
+              <div class="input-tambahan">
+                
               </div>
               <div class="form-group">
-                <label>Tanggal</label>
-                <input type="text" class="form-control" placeholder="Tanggal" name="tanggal" required>
-              </div>
-              <div class="form-group">
-                <label>Penanggung Jawab</label>
-                <input type="text" class="form-control" placeholder="Penanggung Jawab" name="penanggung_jawab" required>
+                <label>Pemohon</label>
+                <input type="text" class="form-control" placeholder="Pemohon" name="pemohon" required>
               </div>
               <div class="form-group">
                 <label>Keterangan</label>
-                <input type="text" class="form-control" placeholder="Keterangan" name="keterangan" required>
+                <input type="text" class="form-control" placeholder="Keterangan" name="keterangan">
               </div>
               <div class="modal-footer">
                 <button type="submit" class="btn btn-primary">Simpan</button>
@@ -207,35 +203,26 @@
     </div>
   </div>
 
-{{-- @foreach ($data as $item)
-<div class="modal fade" id="modal-default{{$item->id}}">
+  <div class="modal fade" id="modal-default2">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
-            <h4 class="modal-title">Ubah Pekerjaan</h4>
+            <h4 class="modal-title">Ubah Surat Keluar</h4>
         </div>
         <div class="modal-body">
-            <form method="post" action="{{route('pekerjaan.update',$item->id )}}">
+            <form method="post" action="{{route('suratkeluar.store')}}">
                 @csrf
-                @method('PUT')
-                
+                <input type="hidden" name="id" id="id">
                 <div class="form-group">
-                    <label>Nama</label>
-                    <input type="text" class="form-control" placeholder="Nama" name="nama" value="{{$item->nama}}" required>
+                  <label>Pemohon</label>
+                  <input type="text" id="pemohon" class="form-control" placeholder="Pemohon" name="pemohon" required>
                 </div>
                 <div class="form-group">
-                  <label>Warna</label>
-  
-                  <div class="input-group my-colorpicker2">
-                    <input type="text" class="form-control my-colorpicker1" name="warna" value="{{$item->warna}}">
-  
-                    <div class="input-group-addon">
-                      <i></i>
-                    </div>
-                  </div>
+                  <label>Keterangan</label>
+                  <input type="text" id="keterangan" class="form-control" placeholder="Keterangan" name="keterangan">
                 </div>
               <!-- /.card-body -->
 
@@ -248,8 +235,7 @@
       <!-- /.modal-content -->
     </div>
 </div>
-  <!-- /.modal -->  
-@endforeach --}}
+
 @endsection
 
 @section('js')
@@ -265,12 +251,47 @@ $(document).ready(function(){
     $.alert("{{session('error')}}")
     @endif
 
+    $('.edit').click(function(){
+        var id = $(this).attr('data-id');
+        url = '{{route('suratkeluar.edit',":id")}}';
+        url = url.replace(':id', id);
+        _token = $('input[name=_token]').val();
+        $.ajax({
+            type: 'GET',
+            dataType: 'json',
+            url: url,
+        })
+        .done(function(response) {
+            console.log(response)
+            $('#id').val(response.id)
+            $('#pemohon').val(response.pemohon)
+            $('#keterangan').val(response.keterangan)
+            $('#modal-default2').modal('show');
+        })
+        .fail(function(){
+            $.alert("error");
+            return;
+        })
+        .always(function() {
+            console.log("complete");
+        });
+    })
+
     $('.surat').change(function(){
       if($(this).val() == "Lainnya"){
-        $('.input-tambahan').removeAttr('hidden');
+        $('.input-tambahan').append(`
+        <div class="form-group">
+                  <label>Nama Surat</label>
+                  <input type="text" class="form-control" placeholder="Nama Surat" name="nama_surat" required>
+                </div>
+                <div class="form-group">
+                  <label>Kode Surat</label>
+                  <input type="text" class="form-control" placeholder="Kode Surat" name="kode_surat" required>
+                </div>
+        `)
       }
       else{
-        $('.input-tambahan').prop('hidden',true);
+        $('.input-tambahan').empty();
       }
     })
  })

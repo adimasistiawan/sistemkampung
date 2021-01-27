@@ -7,6 +7,7 @@ use App\Formulir;
 use Carbon\Carbon;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\File;
+use Response;
 class FormulirController extends Controller
 {
     /**
@@ -80,6 +81,7 @@ class FormulirController extends Controller
         return redirect()->back()->with('success', 'Success');
     }
 
+
     /**
      * Display the specified resource.
      *
@@ -88,7 +90,22 @@ class FormulirController extends Controller
      */
     public function show($id)
     {
-        //
+        $data = Formulir::find($id);
+        if($data == null){
+            return redirect()->back();
+        }
+        $filename = $data->file;
+        $file_path = base_path() .'/public/formulir/'. $filename;
+        if (file_exists($file_path))
+        {
+            return Response::download($file_path, $filename, [
+                'Content-Length: '. filesize($file_path)
+            ]);
+        }
+        else
+        {
+            return redirect()->back()->with('error', 'File tidak ditemukan');
+        }
     }
 
     /**
@@ -130,5 +147,30 @@ class FormulirController extends Controller
         }
         $form->delete();
         return redirect()->back()->with('success', 'Success');
+    }
+
+    public function formulir(){
+        $data = Formulir::all();
+        return view('formulir',compact('data'));
+    }
+
+    public function download($id)
+    {
+        $data = Formulir::find($id);
+        if($data == null){
+            return redirect()->back();
+        }
+        $filename = $data->file;
+        $file_path = base_path() .'/public/formulir/'. $filename;
+        if (file_exists($file_path))
+        {
+            return Response::download($file_path, $filename, [
+                'Content-Length: '. filesize($file_path)
+            ]);
+        }
+        else
+        {
+            return redirect()->back()->with('error', 'File tidak ditemukan');
+        }
     }
 }

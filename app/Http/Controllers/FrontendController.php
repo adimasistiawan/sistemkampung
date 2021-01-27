@@ -15,7 +15,8 @@ class FrontendController extends Controller
         $profil = Pengaturan::all();
         $data = json_decode($profil[0]->web, true);
         $berita = Berita::orderBy('created_at','desc')->limit(5)->get();
-        return view('home',compact('berita','data'));
+        $video = Berita::where('video','!=',null)->orderBy('created_at','desc')->limit(6)->get();
+        return view('home',compact('berita','data','video'));
     }
     public function berita(){
         $berita = Berita::orderBy('created_at','desc')->paginate(10);

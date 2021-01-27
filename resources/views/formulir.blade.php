@@ -1,6 +1,6 @@
 @extends('template')
 @section('title')
-    Surat | Kampung Notoharjo
+    Formulir | Kampung Notoharjo
 @endsection
 @section('css')
 <link rel="stylesheet" href="{{asset('admin_asset/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css')}}">
@@ -35,58 +35,32 @@
           <div class="card">
             <div class="card-header">
               <div class="card-title">
-                <h4>Surat</h4>
+                <h4>Formulir</h4>
               </div>
             </div>
             <div class="card-body">
               
               <div class="row">
                 <div class="col-sm-12 grid-margin">
-                  @if(session('error'))
-                  <div class="alert alert-danger">
-                      {{session('error')}}
-                  </div>
-                  @elseif(session('success'))
-                      <div class="alert alert-success">
-                          {{session('success')}}
-                      </div>
-                  @endif
-                    <a href="{{route('surat.buat')}}" class="btn btn-primary">Buat Surat</a>
-                    <br>
-                    <br>
                     <div class="table-responsive">
                       <table id="datatable" class="table table-bordered table-hover" width="100%">
                         <thead>
                           <tr>
                             <th>No</th>
-                            <th>Tanggal</th>
-                            <th>Nama Surat</th>
-                            <th>Status</th>
-                            <th>Keterangan</th>
+                            <th>Nama Formulir</th>
+                            <th></th>
                           </tr>
                         </thead>
                         <tbody>
                           @php
                               $no = 1;
                           @endphp
-                          @foreach($surat_keluar as $value)
+                          @foreach($data as $value)
                           <tr>
                             <td>{{$no}}</td>
-                            <td>{{{date('d-m-Y',strtotime($value->created_at))}}}</td>
-                            <td>{{$value->perihal}}</td>
+                            <td>{{$value->nama}}</td>
                             <td>
-                              @if ($value->status == "Belum Diterima")
-                                  <span class="badge badge-warning text-white">Belum Diterima</span>
-                              @elseif ($value->status == "Ditolak")
-                                  <span class="badge badge-danger">Ditolak</span>
-                              @else
-                                  <span class="badge badge-success">Telah Diterima</span>
-                              @endif
-                            </td>
-                            <td>
-                              @if ($value->status != "Telah Diterima")
-                              {{$value->keterangan}}
-                              @endif
+                              <a href="{{route('formulir.download',$value->id)}}" class="btn btn-success"><i class="fa fa-download"></i></a>
                             </td>
                           </tr>
                           @php
@@ -113,6 +87,9 @@
 <script src="{{asset('admin_asset/bower_components/datatables.net/js/jquery.dataTables.min.js')}}"></script>
 <script src="{{asset('admin_asset/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js')}}"></script>
 <script>
+    @if(session()->has('error'))
+    $.alert("{{session('error')}}")
+    @endif
     $('#datatable').DataTable({
       'paging'      : true,
       'lengthChange': false,

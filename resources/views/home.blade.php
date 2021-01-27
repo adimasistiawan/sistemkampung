@@ -49,6 +49,9 @@
         <div class="col-lg-9 stretch-card grid-margin">
           <div class="card">
             <div class="card-body">
+              @if(count($berita) == 0)
+              <span class="text-center">Tidak ada berita</span>
+              @endif
             @foreach ($berita as $item)
             
             <div class="row">
@@ -112,19 +115,26 @@
           <div class="card">
             <div class="card-body">
               <div class="row">
-                <div class="col-lg-8">
+                <div class="col-lg-12">
                   <div class="card-title">
                     Video
                   </div>
                   <div class="row">
-                    <div class="col-sm-6 grid-margin">
+                    @if(count($video) == 0)
+                    <span class="text-center">Tidak ada video</span>
+                    @endif
+                    @foreach ($video as $item)
+                    <div class="col-sm-4 grid-margin">
                       <div class="position-relative">
                         <div class="rotate-img">
-                          <img
-                            src="assets/images/dashboard/home_7.jpg"
+                          <a href="{{route('berita.detail',$item->id)}}">
+                          <video
+                            src="{{asset('video_berita/'.$item->video)}}"
                             alt="thumb"
                             class="img-fluid"
-                          />
+                          >
+                          </video>
+                        </a>
                         </div>
                         <div class="badge-positioned w-90">
                           <div
@@ -132,7 +142,7 @@
                           >
                             <span
                               class="badge badge-danger font-weight-bold"
-                              >Lifestyle</span
+                              >Terbaru</span
                             >
                             <div class="video-icon">
                               <i class="mdi mdi-play"></i>
@@ -141,174 +151,14 @@
                         </div>
                       </div>
                     </div>
+                    @endforeach
+                    
 
-                    <div class="col-sm-6 grid-margin">
-                      <div class="position-relative">
-                        <div class="rotate-img">
-                          <img
-                            src="assets/images/dashboard/home_8.jpg"
-                            alt="thumb"
-                            class="img-fluid"
-                          />
-                        </div>
-                        <div class="badge-positioned w-90">
-                          <div
-                            class="d-flex justify-content-between align-items-center"
-                          >
-                            <span
-                              class="badge badge-danger font-weight-bold"
-                              >National News</span
-                            >
-                            <div class="video-icon">
-                              <i class="mdi mdi-play"></i>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
+                    
                   </div>
-                  <div class="row">
-                    <div class="col-sm-6 grid-margin">
-                      <div class="position-relative">
-                        <div class="rotate-img">
-                          <img
-                            src="assets/images/dashboard/home_9.jpg"
-                            alt="thumb"
-                            class="img-fluid"
-                          />
-                        </div>
-                        <div class="badge-positioned w-90">
-                          <div
-                            class="d-flex justify-content-between align-items-center"
-                          >
-                            <span
-                              class="badge badge-danger font-weight-bold"
-                              >Lifestyle</span
-                            >
-                            <div class="video-icon">
-                              <i class="mdi mdi-play"></i>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="col-sm-6 grid-margin">
-                      <div class="position-relative">
-                        <div class="rotate-img">
-                          <img
-                            src="assets/images/dashboard/home_10.jpg"
-                            alt="thumb"
-                            class="img-fluid"
-                          />
-                        </div>
-                        <div class="badge-positioned w-90">
-                          <div
-                            class="d-flex justify-content-between align-items-center"
-                          >
-                            <span
-                              class="badge badge-danger font-weight-bold"
-                              >National News</span
-                            >
-                            <div class="video-icon">
-                              <i class="mdi mdi-play"></i>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                  
                 </div>
-                <div class="col-lg-4">
-                  <div
-                    class="d-flex justify-content-between align-items-center"
-                  >
-                    <div class="card-title">
-                      Latest Video
-                    </div>
-                    <p class="mb-3">See all</p>
-                  </div>
-                  <div
-                    class="d-flex justify-content-between align-items-center border-bottom pb-2"
-                  >
-                    <div class="div-w-80 mr-3">
-                      <div class="rotate-img">
-                        <img
-                          src="assets/images/dashboard/home_11.jpg"
-                          alt="thumb"
-                          class="img-fluid"
-                        />
-                      </div>
-                    </div>
-                    <h3 class="font-weight-600 mb-0">
-                      Apple Introduces Apple Watch
-                    </h3>
-                  </div>
-                  <div
-                    class="d-flex justify-content-between align-items-center border-bottom pt-3 pb-2"
-                  >
-                    <div class="div-w-80 mr-3">
-                      <div class="rotate-img">
-                        <img
-                          src="assets/images/dashboard/home_12.jpg"
-                          alt="thumb"
-                          class="img-fluid"
-                        />
-                      </div>
-                    </div>
-                    <h3 class="font-weight-600 mb-0">
-                      SEO Strategy & Google Search
-                    </h3>
-                  </div>
-                  <div
-                    class="d-flex justify-content-between align-items-center border-bottom pt-3 pb-2"
-                  >
-                    <div class="div-w-80 mr-3">
-                      <div class="rotate-img">
-                        <img
-                          src="assets/images/dashboard/home_13.jpg"
-                          alt="thumb"
-                          class="img-fluid"
-                        />
-                      </div>
-                    </div>
-                    <h3 class="font-weight-600 mb-0">
-                      Cycling benefit & disadvantag
-                    </h3>
-                  </div>
-                  <div
-                    class="d-flex justify-content-between align-items-center border-bottom pt-3 pb-2"
-                  >
-                    <div class="div-w-80 mr-3">
-                      <div class="rotate-img">
-                        <img
-                          src="assets/images/dashboard/home_14.jpg"
-                          alt="thumb"
-                          class="img-fluid"
-                        />
-                      </div>
-                    </div>
-                    <h3 class="font-weight-600">
-                      The Major Health Benefits of
-                    </h3>
-                  </div>
-                  <div
-                    class="d-flex justify-content-between align-items-center pt-3"
-                  >
-                    <div class="div-w-80 mr-3">
-                      <div class="rotate-img">
-                        <img
-                          src="assets/images/dashboard/home_15.jpg"
-                          alt="thumb"
-                          class="img-fluid"
-                        />
-                      </div>
-                    </div>
-                    <h3 class="font-weight-600 mb-0">
-                      Powerful Moments of Peace
-                    </h3>
-                  </div>
-                </div>
+                
               </div>
             </div>
           </div>

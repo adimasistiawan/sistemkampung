@@ -18,7 +18,7 @@ class SuratKeluarController extends Controller
      */
     public function index()
     {
-        $telahditerima = SuratKeluar::where('status','Telah Diterima')->orderBy('updated_at','desc')->get();
+        $telahditerima = SuratKeluar::where('status','Telah Diterima')->orderBy('tanggal','desc')->get();
         $belumditerima = SuratKeluar::where('status','Belum Diterima')->orderBy('updated_at','desc')->get();
         return view('admin.suratkeluar.index',compact('telahditerima','belumditerima'));
     }
@@ -28,7 +28,7 @@ class SuratKeluarController extends Controller
         
         $watermark = $mark == 1? true:false;
         $surat = SuratKeluar::find($id);
-        $tgl = $surat->tanggal;
+        $tgl = $surat->created_at;
         $json = json_decode($surat->data, true);
         $data = $json['data'];
         $profil = Pengaturan::all();
@@ -103,7 +103,7 @@ class SuratKeluarController extends Controller
             return $pdf->stream();
         }
 
-        else if($perihal == "Surat Keterangan Kematian Suami/Istri"){
+        else if($perihal == "Surat Keterangan Kematian SuamiIstri"){
             $pdf = PDF::loadView('admin.suratkeluar.pdf.kemsuamiistri',compact('warga','tgl','data','dataprofil','watermark','nomor'));
             return $pdf->stream();
         }
@@ -136,6 +136,7 @@ class SuratKeluarController extends Controller
             
             $surat->update([
                 'nomor_surat' => $nomorsurat,
+                'tanggal' => Carbon::now(),
                 'urutan' => $urutan,
                 'status' => "Telah Diterima",
                 'keterangan' => $request->keterangan,
@@ -162,7 +163,75 @@ class SuratKeluarController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if($request->id == null){
+            if($request->surat != "Lainnya"){
+                $kodesurat = KodeSurat::where('nama',$request->surat)->first();
+                $kode = $kodesurat->kode;
+                $bulan = month(Carbon::now()->month);
+                $tahun = Carbon::now()->year;
+                $check = SuratKeluar::where('urutan','!=',null)->whereMonth('tanggal',Carbon::now()->month)->orderBy('urutan','desc');
+                
+                if(count($check->get()) == 0){
+                    $urutan = 1;
+                    $nomorsurat = $kode." / "."001"." / "."K.9"." / ".$bulan." / ".$tahun;
+                }
+                else{
+                    $sk = $check->first();
+                    $urutan = $sk->urutan+1;
+                    $u = str_pad(($sk->urutan+1), 3, '0', STR_PAD_LEFT);
+                    $nomorsurat = $kode." / ".$u." / "."K.9"." / ".$bulan." / ".$tahun;
+                }
+                
+                SuratKeluar::create([
+                    'pemohon' => $request->pemohon,
+                    'perihal' => $request->surat,
+                    'tanggal' => Carbon::now(),
+                    'nomor_surat' => $nomorsurat,
+                    'urutan' => $urutan,
+                    'status' => "Telah Diterima",
+                    'keterangan' => $request->keterangan,
+                ]);
+            }
+            
+            else{
+                
+                $kode = $request->kode_surat;
+                $bulan = month(Carbon::now()->month);
+                $tahun = Carbon::now()->year;
+                $check = SuratKeluar::where('urutan','!=',null)->whereMonth('tanggal',Carbon::now()->month)->orderBy('urutan','desc');
+                
+                if(count($check->get()) == 0){
+                    $urutan = 1;
+                    $nomorsurat = $kode." / "."001"." / "."K.9"." / ".$bulan." / ".$tahun;
+                }
+                else{
+                    $sk = $check->first();
+                    $urutan = $sk->urutan+1;
+                    $u = str_pad(($sk->urutan+1), 3, '0', STR_PAD_LEFT);
+                    $nomorsurat = $kode." / ".$u." / "."K.9"." / ".$bulan." / ".$tahun;
+                }
+                
+                SuratKeluar::create([
+                    'pemohon' => $request->pemohon,
+                    'perihal' => $request->nama_surat,
+                    'tanggal' => Carbon::now(),
+                    'nomor_surat' => $nomorsurat,
+                    'urutan' => $urutan,
+                    'status' => "Telah Diterima",
+                    'keterangan' => $request->keterangan,
+                ]);
+            }
+        }
+
+        else{
+            SuratKeluar::find($request->id)->update([
+                'pemohon' => $request->pemohon,
+                'keterangan' => $request->keterangan,
+            ]);
+        }
+        
+
+        return redirect()->back()->with('success', 'Success');
     }
 
     /**
@@ -185,7 +254,9 @@ class SuratKeluarController extends Controller
      */
     public function edit($id)
     {
-        //
+       $data = SuratKeluar::find($id);
+
+       return $data;
     }
 
     /**

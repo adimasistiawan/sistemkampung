@@ -36,6 +36,7 @@
                         <tr>
                             <th width="15px">No</th>
                             <th>Nama Formulir</th>
+                            <th>Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -50,6 +51,7 @@
                                 <form action="{{route('formulir.destroy', $item->id)}}" method="post">
                                     @csrf
                                     @method('delete')
+                                    <a class="btn btn-success" href="{{route('formulir.show',$item->id)}}"><i class="fa fa-download"></i></a>
                                     <div class="btn btn-warning edit" data-id="{{$item->id}}"  data-toggle="modal">Ubah</div>
                                     <button type="submit" class="btn btn-danger hapus" onclick="return confirm('Apakah kamu yakin ingin menghapus data?')">Hapus</button>
                                 </form>
@@ -89,7 +91,7 @@
               <div class="form-group">
                   <label>File</label>
                   <input type="file" class="form-control" placeholder="File" name="file" required>
-                  <span>Max 4 MB</span>
+                  
               </div>
               
               

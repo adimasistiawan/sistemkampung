@@ -13,7 +13,7 @@ class SuratMasukController extends Controller
      */
     public function index()
     {
-        $data = SuratMasuk::orderBy('updated_at','desc')->get();
+        $data = SuratMasuk::orderBy('created_at','desc')->get();
         return view('admin.suratmasuk.index',compact('data'));
     }
 

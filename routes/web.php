@@ -55,6 +55,8 @@ Route::group(['middleware' => 'warga'], function () {
     Route::get('/akun/ganti-password', 'ProfilWargaController@gantipassword')->name('gantipassword.warga');
     Route::post('/akun/ganti-password/submit','ProfilWargaController@submitgantipassword')->name('gantipassword.warga.submit');
     Route::get('/akun/surat', 'SuratController@index')->name('surat');
+    Route::get('/akun/formulir', 'FormulirController@formulir')->name('formulir');
+    Route::get('/akun/formulir/download/{id}', 'FormulirController@download')->name('formulir.download');
     Route::get('/akun/surat/buat', 'SuratController@buat')->name('surat.buat');
     Route::post('/akun/surat/submit','SuratController@submit')->name('surat.submit');
 });
@@ -73,6 +75,7 @@ Route::group(['middleware' => 'admin'], function () {
     Route::resource('/admin/pekerjaan', 'PekerjaanController');
     Route::resource('/admin/pendidikan', 'PendidikanController');
     Route::resource('/admin/berita', 'BeritaController');
+    Route::get('/admin/berita/deletevideo/{id}','BeritaController@deletevideo')->name('berita.deletevideo');
     Route::resource('/admin/profil', 'ProfilController');
     Route::get('/admin/web', 'FrontendController@web')->name('web.index');
     Route::post('/admin/web/store', 'FrontendController@webstore')->name('web.store');

@@ -35,7 +35,13 @@
                       <tr height="40px">
                           <th>Nama Warga</th>
                           <td>:</td>
-                          <td><a href="{{route('warga.show',$data->warga->id)}}" target="blank"> {{$data->warga->nama}} <i class="fa fa-edit"></i></a></td>
+                          <td>
+                            @if($data->warga_id == null)
+                            {{$data->pemohon}}
+                            @else
+                            <a href="{{route('warga.show',$data->warga->id)}}" target="blank"> {{$data->warga->nama}} <i class="fa fa-edit"></i></a>
+                            @endif
+                          </td>
                       </tr>
                         <tr height="40px">
                             <th>Tanggal</th>
@@ -57,7 +63,7 @@
                           </td>
                         </tr>
                     </table>
-                    <a href="{{route('suratkeluar.pdf',['perihal'=>$data->perihal,'id'=>$data->id,'watermark'=>true])}}" target="blank" class="btn btn-warning">Lihat Surat</a>
+                    <a href="{{route('suratkeluar.pdf',['perihal'=>$data->perihal == "Surat Keterangan Kematian Suami/Istri"? "Surat Keterangan Kematian SuamiIstri":$data->perihal,'id'=>$data->id,'watermark'=>true])}}" target="blank" class="btn btn-warning">Lihat Surat</a>
                 </div>
             </div>
             @if($data->status == "Belum Diterima")

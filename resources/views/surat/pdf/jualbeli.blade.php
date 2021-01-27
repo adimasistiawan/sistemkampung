@@ -10,18 +10,9 @@
   {{-- <script src="{{asset('dashboard/plugins/jquery/jquery.min.js')}}"></script> --}}
     <style>
 
-    @font-face {
-      font-family: 'CustomFont';
-      src: url('{{asset("Calibri Regular.ttf")}}')  format('truetype')
-    }
-    @font-face {
-      font-family: 'CustomFontBold';
-      src: url('{{asset("Calibri Bold.ttf")}}')  format('truetype')
-    }
 
     *{
       font-size:16px;
-      font-family: 'CustomFont';
     }
     
         .tr-lokasi{
@@ -53,7 +44,6 @@
         }
 
         body {
-            font-family: 'CustomFont';
         }
     </style>
 </head>
@@ -66,7 +56,7 @@
       <div style="text-align: center; ">
         
 
-        <u><span style=" font-size:19px; font-family: 'CustomFontBold';">SURAT KETERANGAN JUAL BELI</span></u><br>
+        <u><span style=" font-size:19px;">SURAT KETERANGAN JUAL BELI</span></u><br>
         {{-- <span >Nomor : 478 / 506 / K.9 / XII / 2020</span><br> --}}
       </div>
       <br>

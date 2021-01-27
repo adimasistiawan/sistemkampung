@@ -7,6 +7,7 @@ use App\Berita;
 use Carbon\Carbon;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\File;
+use Auth;
 class BeritaController extends Controller
 {
     /**
@@ -16,7 +17,7 @@ class BeritaController extends Controller
      */
     public function index()
     {
-        $data = Berita::all();
+        $data = Berita::orderBy('updated_at','desc')->get();
         return view('admin.berita.index',compact('data'));
     }
 
@@ -42,8 +43,19 @@ class BeritaController extends Controller
         $name   = Str::random().$resorce->getClientOriginalName();
         $resorce->move(\base_path() ."/public/image_berita", $name);
 
+        if($request->video != null){
+            $resorce       = $request->file('video');
+            $video   = Str::random().$resorce->getClientOriginalName();
+            $resorce->move(\base_path() ."/public/video_berita", $video);
+        }
+        else{
+            $video = null;
+        }
+        
+
         Berita::create([
             'foto' => $name,
+            'video' => $video,
             'dibuat_oleh' => Auth::guard('admin')->user()->nama,
             'judul' => $request->judul,
             'tanggal' => $request->tanggal,
@@ -95,18 +107,39 @@ class BeritaController extends Controller
             if(File::exists($image_path)) {
                 File::delete($image_path);
             }
-            $berita->update([
-                'foto' => $name,
-                'judul' => $request->judul,
-                'tanggal' => $request->tanggal,
-                'isi' => $request->isi,
-            ]);
+            $berita->foto = $name;
+            $berita->judul = $request->judul;
+            $berita->tanggal = $request->tanggal;
+            $berita->isi = $request->isi;
+            if($request->video != null){
+                $resorce       = $request->file('video');
+                $video   = Str::random().$resorce->getClientOriginalName();
+                $resorce->move(\base_path() ."/public/video_berita", $video);
+
+                $image_path = "video_berita/".$berita->video;
+                if(File::exists($image_path)) {
+                    File::delete($image_path);
+                }
+                $berita->video = $video;
+            }
+            $berita->update();
         }else{
-            Berita::find($id)->update([
-                'judul' => $request->judul,
-                'tanggal' => $request->tanggal,
-                'isi' => $request->isi,
-            ]);
+            $berita = Berita::find($id);
+            $berita->judul = $request->judul;
+            $berita->tanggal = $request->tanggal;
+            $berita->isi = $request->isi;
+            if($request->video != null){
+                $resorce       = $request->file('video');
+                $video   = Str::random().$resorce->getClientOriginalName();
+                $resorce->move(\base_path() ."/public/video_berita", $video);
+
+                $image_path = "video_berita/".$berita->video;
+                if(File::exists($image_path)) {
+                    File::delete($image_path);
+                }
+                $berita->video = $video;
+            }
+            $berita->update();
         }
         return redirect()->route('berita.index')->with('success', 'Success');
     }
@@ -124,7 +157,26 @@ class BeritaController extends Controller
         if(File::exists($image_path)) {
             File::delete($image_path);
         }
+
+        $image_path = "video_berita/".$berita->video;
+        if(File::exists($image_path)) {
+            File::delete($image_path);
+        }
         $berita->delete();
         return redirect()->route('berita.index')->with('success', 'Success');
+    }
+
+    public function deletevideo($id){
+        $berita = Berita::find($id);
+         
+        $image_path = "video_berita/".$berita->video;
+        if(File::exists($image_path)) {
+            File::delete($image_path);
+        }
+
+        $berita->video = null;
+        $berita->update();
+
+        return redirect()->back();
     }
 }

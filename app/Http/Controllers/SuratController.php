@@ -100,6 +100,11 @@ class SuratController extends Controller
                 $pdf = PDF::loadView('surat.pdf.perkawinan',compact('tgl','data','dataprofil','watermark'));
                 return $pdf->stream();
             }
+
+            else if($request->surat == "Surat Keterangan Kematian Suami/Istri"){
+                $pdf = PDF::loadView('surat.pdf.kemsuamiistri',compact('tgl','data','dataprofil','watermark'));
+                return $pdf->stream();
+            }
         }
         
         /// ---- ajukan
@@ -111,7 +116,6 @@ class SuratController extends Controller
             ]);
             SuratKeluar::create([
                 'warga_id' => Auth::guard('warga')->user()->id,
-                'tanggal' => $tgl,
                 'perihal' => $request->surat,
                 'data' => $json
             ]);

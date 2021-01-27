@@ -10,18 +10,9 @@
   {{-- <script src="{{asset('dashboard/plugins/jquery/jquery.min.js')}}"></script> --}}
     <style>
 
-    @font-face {
-      font-family: 'CustomFont';
-      src: url('{{asset("Calibri Regular.ttf")}}')  format('truetype')
-    }
-    @font-face {
-      font-family: 'CustomFontBold';
-      src: url('{{asset("Calibri Bold.ttf")}}')  format('truetype')
-    }
-
     *{
       font-size:16px;
-      font-family: 'CustomFont';
+      
     }
     
         .tr-lokasi{
@@ -53,7 +44,7 @@
         }
 
         body {
-            font-family: 'CustomFont';
+            
         }
     </style>
 </head>
@@ -70,7 +61,7 @@
               <img src="{{asset('logo.png')}}" alt="" width="80px" height="100px">
             </td>
             <td width="300px" align="center" style="font-size: 24px">
-              <span style="font-family: 'CustomFontBold'; font-size: 18px">PEMERINTAH KABUPATEN LAMPUNG TENGAH</span><br>
+              <span style=" font-size: 18px">PEMERINTAH KABUPATEN LAMPUNG TENGAH</span><br>
               <span style="font-size: 18px">KECAMATAN TRIMURJO</span><br>
               <span style="font-size: 18px">KAMPUNG NOTOHARJO</span><br>
               <table>
@@ -85,7 +76,7 @@
         
         <hr style="border: 2px solid #000;"><br>
 
-        <u><span style=" font-size:19px; font-family: 'CustomFontBold';">SURAT KETERANGAN KUASA</span></u><br>
+        <u><span style=" font-size:19px; ">SURAT KETERANGAN KUASA</span></u><br>
         {{-- <span >Nomor : 478 / 506 / K.9 / XII / 2020</span><br> --}}
       </div>
       <br>

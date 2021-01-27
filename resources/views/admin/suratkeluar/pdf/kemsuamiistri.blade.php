@@ -20,7 +20,7 @@
     }
 
     *{
-      font-size:12px;
+      font-size:14px;
     }
     
         .tr-lokasi{
@@ -59,7 +59,7 @@
 </head>
 <body>
   @if ($watermark)
-  <div style="background-size: cover; background-repeat: no-repeat; background-image: url({{asset('belum.png')}});">
+  <div style="background-size: cover; background-repeat: no-repeat; background-image: url({{asset('belum_diterima.png')}});">
 @else
   <div>
 @endif
@@ -79,7 +79,7 @@
                 <td>
                 </td>
                 <td style="text-align: right">
-                    <b>Model N 1</b>
+                    <b>Model N6</b>
                 </td>
             </tr>
            
@@ -121,8 +121,11 @@
           </table>
           <br>
       <div style="text-align: center; ">
-          <u><span style=" font-size:14px;">SURAT PENGANTAR PERKAWINAN</span></u><br>
+          <u><span style=" font-size:14px;">SURAT KETERANGAN KEMATIAN SUAMI/ISTRI</span></u><br>
           {{-- <span >Nomor : 474 / 391 / K.9 / X / 2015</span><br> --}}
+          @if(!$watermark)
+          <span>Nomor : {{$nomor}}</span>
+          @endif
       </div>
       <br>
       <div style="padding-right: 30px">
@@ -130,165 +133,158 @@
         <div>
             <table>
               <tr>
+                <td>A.</td>
                 <td>1.</td>
-                <td width="200px">Nama</td>
+                <td width="200px">Nama lengkap dan alias</td>
                 <td>:</td>
-                <td width="395px">{{Auth::guard('warga')->user()->nama}}</td>
+                <td width="395px">{{$data['nama']}}</td>
+              </tr>
+              
+              <tr>
+                <td></td>
+                <td>2.</td>
+                <td>
+                    @if($warga->jenis_kelamin == "Perempuan")
+                    Bin
+                    @else
+                    Binti
+                    @endif
+                </td>
+                <td>:</td>
+                <td>{{$data['orgtua2']}}</td>
               </tr>
               <tr>
-                <td>2.</td>
+                <td></td>
+                <td>3.</td>
                 <td>Nomor Induk Kependudukan (NIK)</td>
                 <td>:</td>
-                <td>{{Auth::guard('warga')->user()->nik}}</td>
+                <td>{{$data['nik']}}</td>
               </tr>
               <tr>
-                <td>3.</td>
-                <td>Jenis Kelamin</td>
-                <td>:</td>
-                <td>{{Auth::guard('warga')->user()->jenis_kelamin}}</td>
-              </tr>
-              <tr>
+                <td></td>
                 <td>4.</td>
                 <td>Tempat dan tanggal lahir</td>
                 <td>:</td>
-                <td>{{Auth::guard('warga')->user()->tempat_lahir}}, {{date('d-m-Y',strtotime(Auth::guard('warga')->user()->tanggal_lahir))}}</td>
+                <td>{{$data['tempat_lahir']}}, {{date('d-m-Y',strtotime($data['tanggal_lahir']))}}</td>
               </tr>
               <tr>
+                <td></td>
                 <td>5.</td>
                 <td>Kewarganegaraan</td>
                 <td>:</td>
                 <td>Indonesia</td>
               </tr>
               <tr>
+                <td></td>
                 <td>6.</td>
                 <td>Agama</td>
                 <td>:</td>
-                <td>{{Auth::guard('warga')->user()->agama}}</td>
+                <td>{{$data['agama']}}</td>
               </tr>
               <tr>
+                <td></td>
                 <td>7.</td>
                 <td>Pekerjaan</td>
                 <td>:</td>
-                <td>{{Auth::guard('warga')->user()->pekerjaan->nama}}</td>
+                <td>{{$data['pekerjaan']}}</td>
               </tr>
               <tr>
+                <td></td>
                 <td>8.</td>
                 <td>Alamat</td>
                 <td>:</td>
-                <td>{{Auth::guard('warga')->user()->alamat}}</td>
+                <td>{{$data['alamat']}}</td>
+              </tr>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td colspan="3">telah meninggal dunia pada tanggal</td>
+                <td>:</td>
+                <td>{{date('d-m-Y',strtotime($data['tanggal']))}}</td>
+              </tr>
+              <tr>
+                <td colspan="3">di</td>
+                <td>:</td>
+                <td>{{$data['di']}}</td>
               </tr>
             </table>
-            <br>
+          </div>
+          <br>
+          <div>
+            yang bersangkutan adalah suami/istri dari :
             <table>
                 <tr>
-                  <td>9.</td>
-                  <td width="190px">Status Perkawinan</td>
-                  <td>:</td>
-                  <td width="395px"></td>
-                </tr>
-                <tr>
-                  <td></td>
-                  <td>a. Laki-laki : Jejaka, Duda, <br>&nbsp; &nbsp;atau beristri ke........</td>
-                  <td>:</td>
-                  <td>{{$data->laki}}</td>
-                </tr>
-                <tr>
+                    <td>B.</td>
+                    <td>1.</td>
+                    <td width="200px">Nama lengkap dan alias</td>
+                    <td>:</td>
+                    <td width="395px">{{$warga->nama}}</td>
+                  </tr>
+                  
+                  <tr>
                     <td></td>
-                    <td>b. Perempuan : Perawan, Janda</td>
+                    <td>2.</td>
+                    <td>
+                        @if($warga->jenis_kelamin == "Perempuan")
+                        Binti
+                        @else
+                        Bin
+                        @endif
+                    </td>
                     <td>:</td>
-                    <td>{{$data->perempuan}}</td>
-                </tr>
-                <tr>
-                    <td>10.</td>
-                    <td width="200px">Nama Istri/suami terdahulu</td>
+                    <td>{{$data['orgtua']}}</td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td>3.</td>
+                    <td>Nomor Induk Kependudukan (NIK)</td>
                     <td>:</td>
-                    <td width="395px"></td>
-                </tr>
+                    <td>{{$warga->nik}}</td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td>4.</td>
+                    <td>Tempat dan tanggal lahir</td>
+                    <td>:</td>
+                    <td>{{$warga->tempat_lahir}}, {{date('d-m-Y',strtotime($warga->tanggal_lahir))}}</td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td>5.</td>
+                    <td>Kewarganegaraan</td>
+                    <td>:</td>
+                    <td>Indonesia</td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td>6.</td>
+                    <td>Agama</td>
+                    <td>:</td>
+                    <td>{{$warga->agama}}</td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td>7.</td>
+                    <td>Pekerjaan</td>
+                    <td>:</td>
+                    <td>{{$warga->pekerjaan->nama}}</td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td>8.</td>
+                    <td>Alamat</td>
+                    <td>:</td>
+                    <td>{{$warga->alamat}}</td>
+                  </tr>
             </table>
           </div>
-          <br>
-          <div>
-             Adalah benar anak dari perkawinan seorang Pria :
-            <table>
-              <tr>
-                <td width="200px">Nama lengkap dan alias</td>
-                <td>:</td>
-                <td width="395px">{{$data->nama}}</td>
-              </tr>
-              <tr>
-                <td>Nomor Induk Kependudukan (NIK)</td>
-                <td>:</td>
-                <td>{{$data->nik}}</td>
-              </tr>
-              <tr>
-                <td>Tempat dan tanggal lahir</td>
-                <td>:</td>
-                <td>{{$data->tempat_lahir}}, {{date('d-m-Y',strtotime($data->tanggal_lahir))}}</td>
-              </tr>
-              <tr>
-                <td>Kewarganegaraan</td>
-                <td>:</td>
-                <td>Indonesia</td>
-              </tr>
-              <tr>
-                <td>Agama</td>
-                <td>:</td>
-                <td>{{$data->agama}}</td>
-              </tr>
-              <tr>
-                <td>Pekerjaan</td>
-                <td>:</td>
-                <td>{{$data->pekerjaan}}</td>
-              </tr>
-              <tr>
-                <td>Alamat</td>
-                <td>:</td>
-                <td>{{$data->alamat}}</td>
-              </tr>
-            </table>
-          </div>
-          <br>
-          <div>
-             dengan seorang wanita :
-            <table>
-              <tr>
-                <td width="200px">Nama lengkap dan alias</td>
-                <td>:</td>
-                <td width="395px">{{$data->nama2}}</td>
-              </tr>
-              <tr>
-                <td>Nomor Induk Kependudukan (NIK)</td>
-                <td>:</td>
-                <td>{{$data->nik2}}</td>
-              </tr>
-              <tr>
-                <td>Tempat dan tanggal lahir</td>
-                <td>:</td>
-                <td>{{$data->tempat_lahir2}}, {{date('d-m-Y',strtotime($data->tanggal_lahir2))}}</td>
-              </tr>
-              <tr>
-                <td>Kewarganegaraan</td>
-                <td>:</td>
-                <td>Indonesia</td>
-              </tr>
-              <tr>
-                <td>Agama</td>
-                <td>:</td>
-                <td>{{$data->agama2}}</td>
-              </tr>
-              <tr>
-                <td>Pekerjaan</td>
-                <td>:</td>
-                <td>{{$data->pekerjaan2}}</td>
-              </tr>
-              <tr>
-                <td>Alamat</td>
-                <td>:</td>
-                <td>{{$data->alamat2}}</td>
-              </tr>
-            </table>
-          </div>
-        <p>Demikian, surat pengantar ini dibuat dengan mengingat sumpah jabatan dan untuk dipergunakan sebagaimana mestinya.</p>
+          
+        <p>Demikian surat keterangan ini dibuat dengan mengingat sumpah jabatan dan untuk digunakan seperlunya.</p>
       </div>
       <table width="100%" >
         <tr>
