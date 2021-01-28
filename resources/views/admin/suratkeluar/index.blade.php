@@ -160,21 +160,19 @@
                   <label>Perihal</label>
                   <select name="surat" class="form-control surat" required>
                     <option value="">--Pilih Surat--</option>
-                    <option value="Surat Keterangan Pengantar">Surat Keterangan Pengantar</option>
                     <option value="Surat Keterangan Pindah">Surat Keterangan Pindah</option>
                     <option value="Surat Keterangan Kurang Mampu">Surat Keterangan Kurang Mampu</option>
-                    <option value="Surat Keterangan Kelahiran">Surat Keterangan Kelahiran</option>
                     <option value="Surat Keterangan Kematian">Surat Keterangan Kematian</option>
                     <option value="Surat Keterangan Usaha">Surat Keterangan Usaha</option>
                     <option value="Surat Keterangan Ahli Waris">Surat Keterangan Ahli Waris</option>
                     <option value="Surat Keterangan Tanah">Surat Keterangan Tanah</option>
-                    <option value="Surat Keterangan Nikah">Surat Keterangan Nikah</option>
                     <option value="Surat Keterangan Jual Beli">Surat Keterangan Jual Beli</option>
-                    <option value="Surat Keterangan KK">Surat Keterangan KK</option>
-                    <option value="Surat Keterangan SKCK">Surat Keterangan SKCK</option>
                     <option value="Surat Keterangan Kuasa">Surat Keterangan Kuasa</option>
-                    <option value="Surat Keterangan Izin Penelitian">Surat Keterangan Izin Penelitian</option>
                     <option value="Surat Pernyataan Hiburan">Surat Pernyataan Hiburan</option>
+                    <option value="Surat Rekomendasi Nikah">Surat Rekomendasi Nikah</option>
+                    <option value="Surat Permohonan SKCK">Surat Permohonan SKCK</option>
+                    <option value="Surat Pengantar Perkawinan">Surat Pengantar Perkawinan</option>
+                    <option value="Surat Keterangan Kematian Suami/Istri">Surat Keterangan Kematian Suami/Istri</option>
                     <option value="Surat Keterangan Mengurus Orang Tua">Surat Keterangan Mengurus Orang Tua</option>
                     <option value="Surat Keterangan Kehilangan">Surat Keterangan Kehilangan</option>
                     <option value="Surat Keterangan Jalan">Surat Keterangan Jalan</option>

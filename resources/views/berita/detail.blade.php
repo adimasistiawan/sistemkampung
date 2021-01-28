@@ -1,6 +1,6 @@
 @extends('template')
 @section('title')
-    {{$berita->title}} | Kampung Notoharjo
+    {{$berita->judul}} | Kampung Notoharjo
 @endsection
 @section('css')
     <style>

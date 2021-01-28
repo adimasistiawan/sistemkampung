@@ -129,9 +129,6 @@
                           </div>
                         </li>
                         <li class="nav-item">
-                        <a href="#" class="nav-link">Lembaga</a>
-                        </li>
-                        <li class="nav-item">
                           &nbsp;
                         </li>
                         
