@@ -31,7 +31,9 @@
             </div>
             <!-- /.box-header -->
             <div class="box-body">
-                
+                <b>Total Penduduk : {{$total}}</b>
+                <br>
+                <br>
                 <table id="datatable" class="table table-bordered table-hover">
                     <thead>
                         <tr>
@@ -53,7 +55,7 @@
                             <td>{{$item->kepala_keluarga}}</td>
                             <td>{{$item->no_kk}}</td>
                             <td>{{$item->alamat}}</td>
-                            <td>{{$item->rt_rw}}</td>
+                            <td>{{$item->rt}}/{{$item->rw}}</td>
                             <td>
                                 <form action="{{route('penduduk.destroy', $item->id)}}" method="post">
                                     @csrf

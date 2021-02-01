@@ -16,8 +16,9 @@ class PendudukController extends Controller
      */
     public function index()
     {
+        $total = PendudukDetail::all()->count();
         $data = Penduduk::orderBy('created_at','desc')->get();
-        return view('admin.penduduk.index',compact('data'));
+        return view('admin.penduduk.index',compact('data','total'));
     }
 
     /**
@@ -48,7 +49,8 @@ class PendudukController extends Controller
 
         $penduduk = Penduduk::create([
             'no_kk' => $request->arr['no_kk'],
-            'rt_rw' => $request->arr['rt_rw'],
+            'rt' => $request->arr['rt'],
+            'rw' => $request->arr['rw'],
             'alamat' => $request->arr['alamat'],
             'kepala_keluarga' => $request->arr['kepala_keluarga']
         ]);
@@ -119,7 +121,8 @@ class PendudukController extends Controller
         PendudukDetail::where('penduduk_id',$id)->delete();
         $penduduk->update([
             'no_kk' => $request->arr['no_kk'],
-            'rt_rw' => $request->arr['rt_rw'],
+            'rt' => $request->arr['rt'],
+            'rw' => $request->arr['rw'],
             'alamat' => $request->arr['alamat'],
             'kepala_keluarga' => $request->arr['kepala_keluarga']
         ]);

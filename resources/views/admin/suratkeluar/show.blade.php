@@ -142,9 +142,13 @@ $(document).ready(function(){
                   
                 },
                 
-                No: function () {
-                  return;
+                No: {
+                  text:"Batal",
+                  action: function () {
+                    return;
+                  }
                 }
+                
               }
             })
             
@@ -157,7 +161,7 @@ $(document).ready(function(){
               content: '' +
                                             '<form action="" class="formName">' +
                                             '<div class="form-group">' +
-                                            '<input class="form-control alasan" placeholder="Masukan Keterangan">' +
+                                            '<input class="form-control alasan" placeholder="Masukan Keterangan (opsional)">' +
                                             '</div>' +
                                             '</form>',
               buttons: {
@@ -204,8 +208,11 @@ $(document).ready(function(){
                   
                 },
                 
-                No: function () {
-                  return;
+                No: {
+                  text:"Batal",
+                  action: function () {
+                    return;
+                  }
                 }
               }
             })

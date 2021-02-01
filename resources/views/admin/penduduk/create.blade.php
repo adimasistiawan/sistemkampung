@@ -44,9 +44,53 @@
                       <input type="text" class="form-control input" id="alamat"  placeholder="Alamat" required  name="alamat">
                     </div>
                     <div class="form-group">
-                      <label  >RT/RW</label>
-                      <input type="text" class="form-control input" id="rt_rw"  placeholder="RT/RW" required  name="rt_rw">
+                      <label  >RT</label>
+                      <select  id="" class="form-control input" name="rt" required>
+                        <option value="001">001</option>
+                        <option value="002">002</option>
+                        <option value="003">003</option>
+                        <option value="004">004</option>
+                        <option value="005">005</option>
+                        <option value="006">006</option>
+                        <option value="007">007</option>
+                        <option value="008">008</option>
+                        <option value="009">009</option>
+                        <option value="010">010</option>
+                        <option value="011">011</option>
+                        <option value="012">012</option>
+                        <option value="013">013</option>
+                        <option value="014">014</option>
+                        <option value="015">015</option>
+                        <option value="016">016</option>
+                        <option value="017">017</option>
+                        <option value="018">018</option>
+                        <option value="020">020</option>
+                        <option value="021">021</option>
+                        <option value="022">022</option>
+                        <option value="023">023</option>
+                        <option value="024">024</option>
+                        <option value="025">025</option>
+                      </select>
                     </div>
+                    <div class="form-group">
+                        <label  >RW</label>
+                        <select  id="" class="form-control input" name="rw" required>
+                          <option value="001">001</option>
+                          <option value="002">002</option>
+                          <option value="003">003</option>
+                          <option value="004">004</option>
+                          <option value="005">005</option>
+                          <option value="006">006</option>
+                          <option value="007">007</option>
+                          <option value="008">008</option>
+                          <option value="009">009</option>
+                          <option value="010">010</option>
+                          <option value="011">011</option>
+                          <option value="012">012</option>
+                          <option value="013">013</option>
+                          <option value="014">014</option>
+                        </select>
+                      </div>
                 </div>
                 <br>
                 <br>

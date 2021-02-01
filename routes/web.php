@@ -90,6 +90,17 @@ Route::group(['middleware' => 'admin'], function () {
     Route::resource('/admin/kodesurat', 'KodeSuratController');
     Route::resource('/admin/suratmasuk', 'SuratMasukController');
     Route::resource('/admin/formulir', 'FormulirController');
+    Route::get('/admin/laporan/kependudukan/', 'LaporanController@laporan_kependudukan')->name('laporan.kependudukan');
+    Route::get('/admin/laporan/suratmasuk/', 'LaporanController@laporan_suratmasuk')->name('laporan.suratmasuk');
+    Route::get('/admin/laporan/suratkeluar/', 'LaporanController@laporan_suratkeluar')->name('laporan.suratkeluar');
+
+    Route::post('/admin/laporan/kependudukan/submit', 'LaporanController@laporan_kependudukan_submit')->name('laporan.kependudukan.submit');
+    Route::post('/admin/laporan/suratmasuk/submit', 'LaporanController@laporan_suratmasuk_submit')->name('laporan.suratmasuk.submit');
+    Route::post('/admin/laporan/suratkeluar/submit', 'LaporanController@laporan_suratkeluar_submit')->name('laporan.suratkeluar.submit');
+
+    Route::get('/admin/laporan/kependudukan/pdf/{rt}/{rw}', 'LaporanController@laporan_kependudukan_pdf')->name('laporan.kependudukan.pdf');
+    Route::get('/admin/laporan/suratmasuk/pdf/{dari}/{sampai}', 'LaporanController@laporan_suratmasuk_pdf')->name('laporan.suratmasuk.pdf');
+    Route::get('/admin/laporan/suratkeluar/pdf/{dari}/{sampai}', 'LaporanController@laporan_suratkeluar_pdf')->name('laporan.suratkeluar.pdf');
 
     Route::get('logout', 'AuthAdminController@logout')->name('logout');
     

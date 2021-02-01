@@ -23,4 +23,9 @@ class PendudukDetail extends Model
     'penduduk_id',
     'pekerjaan_id',
     'pendidikan'];
+
+    public function penduduk()
+    {
+        return $this->belongsTo('App\Penduduk','penduduk_id','id');    
+    }
 }

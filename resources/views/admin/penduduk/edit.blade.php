@@ -55,9 +55,53 @@
                       <input type="text" class="form-control input" id="alamat"  placeholder="Alamat" required value="{{$penduduk->alamat}}"  name="alamat">
                     </div>
                     <div class="form-group">
-                      <label  >RT/RW</label>
-                      <input type="text" class="form-control input" id="rt_rw"  placeholder="RT/RW" required value="{{$penduduk->rt_rw}}" name="rt_rw">
-                    </div>
+                        <label  >RT</label>
+                        <select  id="" class="form-control input" name="rt" required>
+                          <option value="001" @if($penduduk->rt == "001") selected @endif>001</option>
+                          <option value="002" @if($penduduk->rt == "002") selected @endif>002</option>
+                          <option value="003" @if($penduduk->rt == "003") selected @endif>003</option>
+                          <option value="004" @if($penduduk->rt == "004") selected @endif>004</option>
+                          <option value="005" @if($penduduk->rt == "005") selected @endif>005</option>
+                          <option value="006" @if($penduduk->rt == "006") selected @endif>006</option>
+                          <option value="007" @if($penduduk->rt == "007") selected @endif>007</option>
+                          <option value="008" @if($penduduk->rt == "008") selected @endif>008</option>
+                          <option value="009" @if($penduduk->rt == "009") selected @endif>009</option>
+                          <option value="010" @if($penduduk->rt == "010") selected @endif>010</option>
+                          <option value="011" @if($penduduk->rt == "011") selected @endif>011</option>
+                          <option value="012" @if($penduduk->rt == "012") selected @endif>012</option>
+                          <option value="013" @if($penduduk->rt == "013") selected @endif>013</option>
+                          <option value="014" @if($penduduk->rt == "014") selected @endif>014</option>
+                          <option value="015" @if($penduduk->rt == "015") selected @endif>015</option>
+                          <option value="016" @if($penduduk->rt == "016") selected @endif>016</option>
+                          <option value="017" @if($penduduk->rt == "017") selected @endif>017</option>
+                          <option value="018" @if($penduduk->rt == "018") selected @endif>018</option>
+                          <option value="020" @if($penduduk->rt == "020") selected @endif>020</option>
+                          <option value="021" @if($penduduk->rt == "021") selected @endif>021</option>
+                          <option value="022" @if($penduduk->rt == "022") selected @endif>022</option>
+                          <option value="023" @if($penduduk->rt == "023") selected @endif>023</option>
+                          <option value="024" @if($penduduk->rt == "024") selected @endif>024</option>
+                          <option value="025" @if($penduduk->rt == "025") selected @endif>025</option>
+                        </select>
+                      </div>
+                      <div class="form-group">
+                          <label  >RW</label>
+                          <select  id="" class="form-control input" name="rw" required>
+                            <option value="001" @if($penduduk->rw == "001") selected @endif>001</option>
+                            <option value="002" @if($penduduk->rw == "002") selected @endif>002</option>
+                            <option value="003" @if($penduduk->rw == "003") selected @endif>003</option>
+                            <option value="004" @if($penduduk->rw == "004") selected @endif>004</option>
+                            <option value="005" @if($penduduk->rw == "005") selected @endif>005</option>
+                            <option value="006" @if($penduduk->rw == "006") selected @endif>006</option>
+                            <option value="007" @if($penduduk->rw == "007") selected @endif>007</option>
+                            <option value="008" @if($penduduk->rw == "008") selected @endif>008</option>
+                            <option value="009" @if($penduduk->rw == "009") selected @endif>009</option>
+                            <option value="010" @if($penduduk->rw == "010") selected @endif>010</option>
+                            <option value="011" @if($penduduk->rw == "011") selected @endif>011</option>
+                            <option value="012" @if($penduduk->rw == "012") selected @endif>012</option>
+                            <option value="013" @if($penduduk->rw == "013") selected @endif>013</option>
+                            <option value="014" @if($penduduk->rw == "014") selected @endif>014</option>
+                          </select>
+                        </div>
                 </div>
                 <br>
                 <br>

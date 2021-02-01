@@ -81,8 +81,6 @@
         <u><span style=" font-size:19px; ">SURAT KETERANGAN JALAN</span></u><br>
         {{-- <span >Nomor : 478 / 506 / K.9 / XII / 2020</span><br> --}}
       </div>
-      <br>
-      <br>
       <div style="padding-right: 30px">
         <p>Yang bertanda tangan di bawah ini Kepala Kampung Notoharjo Kecamatan Trimurjo Kabupaten Lampung Tengah, memberikan keterangan kepada :</p>
       
@@ -171,13 +169,9 @@
               </tr>
           </table>
         </div>
-        <br>
         <p>Demikian surat ini kami buat dengan sebenarnya untuk dapat dipergunakan sebagaimana mestinya</p>
       </div>
       
-      <br>
-      
-      <br>
       <br>
       
       <table width="100%" >

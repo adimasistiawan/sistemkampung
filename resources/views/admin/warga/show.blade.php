@@ -161,9 +161,12 @@ $(document).ready(function(){
                     console.log("complete");
                 });
             },
-            No: function () {
-                return;
-            }
+            No: {
+                  text:"Batal",
+                  action: function () {
+                    return;
+                  }
+                }
             }
         })
         
@@ -223,8 +226,11 @@ $(document).ready(function(){
                   
                 },
                 
-                No: function () {
-                  return;
+                No: {
+                  text:"Batal",
+                  action: function () {
+                    return;
+                  }
                 }
               }
             })

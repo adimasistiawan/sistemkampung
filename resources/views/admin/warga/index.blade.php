@@ -68,7 +68,7 @@
                                     @method('delete')
                                     <a href="{{route('warga.show', $item->id)}}" class="btn btn-primary">Lihat</a>
                                     <a  class="btn btn-warning edit" data-toggle="modal" data-target="#modal-default{{$item->id}}">Ubah</a>
-                                    <button type="submit" class="btn btn-danger hapus" onclick="return confirm('Apakah kamu yakin ingin menghapus data?')">Hapus</button>
+                                    {{-- <button type="submit" class="btn btn-danger hapus" onclick="return confirm('Apakah kamu yakin ingin menghapus data?')">Hapus</button> --}}
                                 </form>
                                 @endif
                             </td>
@@ -94,7 +94,7 @@
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
-            <h4 class="modal-title">Ubah Pekerjaan</h4>
+            <h4 class="modal-title">Ubah Data Warga</h4>
         </div>
         <div class="modal-body">
           <form method="post" action="{{route('warga.update',$value->id )}}">
